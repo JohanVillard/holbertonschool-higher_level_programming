@@ -13,4 +13,9 @@
 ## 2. I sometimes suffer from insomnia. And when I can't fall asleep, I play what I call the alphabet game
 
 - Output: OK
-- Checker: OK
+- Checker:NOK
+
+## 3. When I was having that alphabet soup, I never thought that it would pay off
+
+- Output: NOK
+- Checker: NOK
