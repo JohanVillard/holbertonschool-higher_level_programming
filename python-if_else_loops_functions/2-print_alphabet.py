@@ -1,10 +1,11 @@
 #!/usr/bin/python3
 """
-Prints the lowercase alphabet using a loop.
+Prints the lowercase alphabet in a single line.
 
-This script iterates over the ASCII values of the lowercase alphabet
-(from 'a' to 'z') and prints each character on the same line without spaces.
+This script generates a string with all lowercase letters
+(from 'a' to 'z') and prints it using a single print function,
+without any trailing newline.
 """
 
-for i in range(97, 123):
-    print(chr(i), end="")
+# Create a string containing all lowercase letters
+print("".join(chr(i) for i in range(97, 123)), end="")
