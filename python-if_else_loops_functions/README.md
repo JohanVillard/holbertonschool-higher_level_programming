@@ -19,3 +19,8 @@
 
 - Output: NOK
 - Checker: NOK
+
+## 4. Hexadecimal printing
+
+- Output: NOK
+- Checker: NOK
