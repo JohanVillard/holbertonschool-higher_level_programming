@@ -15,5 +15,10 @@ Checker: OK
 
 ## 3. Print string
 
+Output: OK
+Checker: OK
+
+## 4. Play with strings
+
 Output: NOK
 Checker: NOK
