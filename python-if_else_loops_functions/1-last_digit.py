@@ -1,4 +1,10 @@
 #!/usr/bin/python3
+"""
+Calculates the last digit, and prints a message.
+
+Indicating whether the last digit is greater than 5,
+is 0, or is less than 6 and not 0.
+"""
 
 import random
 
