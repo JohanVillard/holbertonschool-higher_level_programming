@@ -25,5 +25,10 @@ Checker: OK
 
 ## 5. Copy - Cut - Paste
 
+Output: OK
+Checker: OK
+
+## 6. Create a new sentence
+
 Output: NOK
 Checker: NOK
