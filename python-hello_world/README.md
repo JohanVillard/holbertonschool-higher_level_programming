@@ -20,5 +20,10 @@ Checker: OK
 
 ## 4. Play with strings
 
+Output: OK
+Checker: OK
+
+## 5. Copy - Cut - Paste
+
 Output: NOK
 Checker: NOK
