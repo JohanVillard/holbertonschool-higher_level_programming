@@ -1,7 +1,7 @@
 ## 0. Hello, print
 
 Output: OK
-Checker: NOK
+Checker: OK
 
 ## 1. Print integer
 
