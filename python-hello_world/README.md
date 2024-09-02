@@ -8,7 +8,12 @@ Checker: OK
 Output: OK
 Checker: OK
 
-## 2.Print float
+## 2. Print float
+
+Output: OK
+Checker: OK
+
+## 3. Print string
 
 Output: NOK
 Checker: NOK
