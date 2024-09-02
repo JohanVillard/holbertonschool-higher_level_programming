@@ -7,5 +7,10 @@
 
 ## 1. The last digit
 
-- Output: NOK
-- Checker: NOK
+- Output: OK
+- Checker: OK
+
+## 2. I sometimes suffer from insomnia. And when I can't fall asleep, I play what I call the alphabet game
+
+- Output: OK
+- Checker: OK
