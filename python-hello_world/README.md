@@ -30,5 +30,10 @@
 
 ## 6. Create a new sentence
 
+- Output: OK
+- Checker: OK
+
+## 7. Easter Egg
+
 - Output: NOK
 - Checker: NOK
