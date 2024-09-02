@@ -35,5 +35,5 @@
 
 ## 7. Easter Egg
 
-- Output: NOK
-- Checker: NOK
+- Output: OK
+- Checker: OK
