@@ -8,6 +8,5 @@ It defines a string `str` with the value "Holberton School", then:
 """
 
 str = "Holberton School"
-
-print(str, str, str)
+print(str * 3)
 print(str[:9])
