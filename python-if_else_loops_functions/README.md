@@ -59,3 +59,8 @@
 
 - Output: OK
 - Checker: OK
+
+## 12. Fizz Buzz
+
+- Output: NOK
+- Checker: NOK
