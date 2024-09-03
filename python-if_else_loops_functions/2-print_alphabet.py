@@ -8,4 +8,5 @@ without any trailing newline.
 """
 
 # Create a string containing all lowercase letters
-print("".join(chr(i) for i in range(97, 123)), end="")
+for i in range(97, 123):
+    print("{}".format(chr(i)), end="")
