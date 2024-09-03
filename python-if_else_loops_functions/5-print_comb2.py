@@ -10,4 +10,4 @@ and a space. The last number (99) is printed without a trailing comma.
 for i in range(0, 99):
     print("{:02d}, ".format(i), end="")
 
-print("99")
+print("{:d}".format(99))
