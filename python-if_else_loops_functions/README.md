@@ -22,5 +22,10 @@
 
 ## 4. Hexadecimal printing
 
-- Output: NOK
+- Output: OK
 - Checker: NOK
+
+## 5. 00...99
+
+- Output : NOK
+- Checker : NOK
