@@ -47,5 +47,15 @@
 
 ## 9. There are only 3 colors, 10 digits, and 7 notes; it's what we do with them that's important
 
-- Output: NOK
-- Checker: NOK
+- Output: OK
+- Checker: OK
+
+## 10. a+b
+
+- Output: OK
+- Checker: OK
+
+## 11. a-b
+
+- Output: OK
+- Checker: OK
