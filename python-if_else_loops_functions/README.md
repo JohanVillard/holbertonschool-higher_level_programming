@@ -64,3 +64,13 @@
 
 - Output: NOK
 - Checker: NOK
+
+## 13. Smile in the mirror
+
+- Output: OK
+- Checker: OK
+
+## 14. Remove at position
+
+- Output: NOK
+- Checker: NOK
