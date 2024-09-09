@@ -3,11 +3,11 @@
 
 def no_c(my_string):
     """
-    Removes all characters c and C from a string.
+    Remove all characters c and C from a string.
 
     Description:
-        This function creates a new string with all characters from the input string,
-        except for lowercase 'c' and uppercase 'C'.
+        This function creates a new string with all characters from the input
+        string, except for lowercase 'c' and uppercase 'C'.
 
     Parameters:
         my_string (str): The input string to be processed.
