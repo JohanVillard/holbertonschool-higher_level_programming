@@ -38,9 +38,6 @@ def matrix_divided(matrix, div):
 
         if div == 0:
             raise ZeroDivisionError("division by zero")
-        
-        if not isinstance(matrix, list):
-            raise TypeError("matrix must be a list")
 
         for row in matrix:
             size = 0
