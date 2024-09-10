@@ -17,8 +17,7 @@ def best_score(a_dictionary):
     if a_dictionary is None:
         return None
 
-    # Take the first value of the first key of the dict
-    biggest_value = next(iter(a_dictionary.values()))
+    biggest_value = 0
 
     for key in a_dictionary:
         if a_dictionary[key] > biggest_value:
