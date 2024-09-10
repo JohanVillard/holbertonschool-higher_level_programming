@@ -15,7 +15,7 @@ def roman_to_int(roman_string):
         int: The integer value corresponding to the Roman numeral, or 0 if
              the input is not a valid Roman numeral or is not a string."""
     if roman_string is None:
-        return None
+        return 0
     # List to store arabic num style and roman key
     int_list = []
     key = ""
