@@ -45,14 +45,14 @@ def matrix_divided(matrix, div):
                 if not isinstance(dividend, (int, float)):
                     raise TypeError(
                         "matrix must be a matrix (list of lists)"
-                        "of integers/floats"
+                        " of integers/floats"
                     )
                 size += 1
             if reference_size == 0:
                 reference_size = size
             elif reference_size > 0 and reference_size != size:
                 raise TypeError("Each row of the matrix"
-                                "must have the same size")
+                                " must have the same size")
 
         new_matrix = []
         for row in matrix:
