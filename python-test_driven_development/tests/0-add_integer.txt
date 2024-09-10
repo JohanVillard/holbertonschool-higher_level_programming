@@ -35,3 +35,4 @@ a must be an integer
 # Add only a
 >>> add_integer(2)
 100
+
