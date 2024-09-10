@@ -13,14 +13,14 @@ def safe_print_list(my_list=[], x=0):
     Returns:
         int: The number of elements successfully printed.
     """
-    i = 0
+    count = 0
     try:
         for num in my_list:
-            print(num, end="")
-            i += 1
-            if x == i:
+            print("{:d}".format(num), end="")
+            count = 1
+            if x == count:
                 break
     except IndexError:
         pass
     print()
-    return i
+    return count
