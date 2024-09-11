@@ -47,14 +47,14 @@ def matrix_divided(matrix, div):
         for row in matrix:
             if not row:
                 raise TypeError(mat_err_msg)
-            for dividend in row:
-                if (not isinstance(dividend, (int, float)) or 
-                        isinstance(dividend, bool)):
-                    raise TypeError(mat_err_msg)
             if reference_size == 0:
                 reference_size = len(row)
             elif reference_size != len(row):
                 raise TypeError(size_err_msg)
+            for dividend in row:
+                if (not isinstance(dividend, (int, float)) or 
+                        isinstance(dividend, bool)):
+                    raise TypeError(mat_err_msg)
 
         new_matrix = []
         for row in matrix:
