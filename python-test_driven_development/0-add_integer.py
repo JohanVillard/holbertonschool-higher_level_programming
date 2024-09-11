@@ -8,7 +8,7 @@ floats, a `TypeError` is raised.
 
 Usage:
     To use this module, import it and call the `add_integer` function with
-    two arguments. The function will return the sum of the two arguments
+    two arguments. The function will return the result of the two arguments
     after converting them to integers.
 """
 
@@ -25,7 +25,7 @@ def add_integer(a, b=98):
                         specified type, a 'TypeError' will raise.
                         If b is a float, it must be cast to int.
     Returns:
-        sum (int): Is the result of the additiion of a and b.
+        result (int): Is the result of the additiion of a and b.
     """
     try:
         int_err_msg = "must be an integer"
@@ -39,9 +39,9 @@ def add_integer(a, b=98):
         if isinstance(b, float):
             b = int(b)
 
-        sum = a + b
+        result = a + b
 
     except TypeError as e:
         print(e)
     else:
-        return sum
+        return result
