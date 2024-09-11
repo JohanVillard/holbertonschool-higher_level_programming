@@ -1,0 +1,133 @@
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+# text is an integer
+>>> text_indentation(1)
+text must be a string
+
+# text is a float
+>>> text_indentation(1.1)
+text must be a string
+
+# text is an list
+>>> text_indentation([1])
+text must be a string
+
+# text is an dict
+>>> text_indentation({1:"R"})
+text must be a string
+
+# text is an boolean
+>>> text_indentation(True)
+text must be a string
+
+# text is an None
+>>> text_indentation(None)
+text must be a string
+
+# text is an empty
+>>> text_indentation()
+Traceback (most recent call last):
+ ---
+TypeError: text_indentation() missing 1 required positional argument: 'text'
+
+# 2 new lines at '.' and no space at beginning and end
+# No '.' at the last line
+>>> text = "igitur ne illud quidem. Fortasse id optimum"
+>>> text_indentation(text)
+igitur ne illud quidem.
+<BLANKLINE>
+Fortasse id optimum
+
+# 2 new lines at '.' and no space at beginning and end
+# '.' at the last line
+# Check if the last line is empty
+>>> text = "igitur ne illud quidem. Fortasse id optimum."
+>>> text_indentation(text)
+igitur ne illud quidem.
+<BLANKLINE>
+Fortasse id optimum.
+<BLANKLINE>
+
+# 2 new lines at '.' and '?' and no space at beginning and end
+# '.' and '?' at the last line
+# Check if the last line is empty
+>>> text = "igitur ne illud quidem. Fortasse id optimum. Quonam modo? Utrum igitur tibi litteram videor an totas paginas commovere?"
+>>> text_indentation(text)
+igitur ne illud quidem.
+<BLANKLINE>
+Fortasse id optimum.
+<BLANKLINE>
+Quonam modo?
+<BLANKLINE>
+Utrum igitur tibi litteram videor an totas paginas commovere?
+<BLANKLINE>
+
+# 2 new lines at '.', '?' and ':' and no space at beginning and end
+# '.', '?' and ':' at the last line
+# Check if the last line is empty
+>>> text = "igitur ne illud quidem. Fortasse id optimum. Quonam modo? Utrum igitur tibi litteram videor an totas paginas commovere? Non autem hoc: igitur ne illud quidem. Fortasse id optimum, sed ubi illud: Plus semper voluptatis?"
+>>> text_indentation(text)
+igitur ne illud quidem.
+<BLANKLINE>
+Fortasse id optimum.
+<BLANKLINE>
+Quonam modo?
+<BLANKLINE>
+Utrum igitur tibi litteram videor an totas paginas commovere?
+<BLANKLINE>
+Non autem hoc:
+<BLANKLINE>
+igitur ne illud quidem.
+<BLANKLINE>
+Fortasse id optimum, sed ubi illud:
+<BLANKLINE>
+Plus semper voluptatis?
+<BLANKLINE>
+
+# text "....."
+>>> text = "....."
+>>> text_indentation(text)
+.
+<BLANKLINE>
+.
+<BLANKLINE>
+.
+<BLANKLINE>
+.
+<BLANKLINE>
+.
+<BLANKLINE>
+
+# text "?????"
+>>> text = "?????"
+>>> text_indentation(text)
+?
+<BLANKLINE>
+?
+<BLANKLINE>
+?
+<BLANKLINE>
+?
+<BLANKLINE>
+?
+<BLANKLINE>
+
+text ":::::"
+>>> text = ":::::"
+>>> text_indentation(text)
+:
+<BLANKLINE>
+:
+<BLANKLINE>
+:
+<BLANKLINE>
+:
+<BLANKLINE>
+:
+<BLANKLINE>
+
+# Only spaces
+text "     "
+>>> text = "    "
+>>> text_indentation(text)
+
