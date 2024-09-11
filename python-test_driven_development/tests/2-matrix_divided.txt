@@ -74,3 +74,62 @@ matrix must be a matrix (list of lists) of integers/floats
 >>> matrix = [[1, 2, 3], [4, 5, 6]]
 >>> matrix_divided(matrix, True)
 div must be a number
+
+# Check matrix with a single row
+>>> matrix = [[1, 2, 3]]
+>>> print(matrix_divided(matrix, 2))
+[[0.5, 1.0, 1.5]]
+
+# Check matrix with a single column
+>>> matrix = [[1], [2], [3]]
+>>> print(matrix_divided(matrix, 1))
+[[1.0], [2.0], [3.0]]
+
+# Check negative and zero values in matrix
+>>> matrix = [[-1, 0, 3], [-4, -5, 6]]
+>>> print(matrix_divided(matrix, 2))
+[[-0.5, 0.0, 1.5], [-2.0, -2.5, 3.0]]
+
+# Check division by a very large float
+>>> matrix = [[1, 2, 3], [4, 5, 6]]
+>>> print(matrix_divided(matrix, 1e10))
+[[0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]
+
+# Check very large integers in matrix
+>>> matrix = [[1000000000, 2000000000, 3000000000], [4000000000, 5000000000, 6000000000]]
+>>> print(matrix_divided(matrix, 2))
+[[500000000.0, 1000000000.0, 1500000000.0], [2000000000.0, 2500000000.0, 3000000000.0]]
+
+# Check dict matrix
+>>> matrix = {}
+>>> matrix_divided(matrix, 3)
+matrix must be a matrix (list of lists) of integers/floats
+
+# Check None matrix
+>>> matrix = None
+>>> matrix_divided(matrix, 3)
+matrix must be a matrix (list of lists) of integers/floats
+
+# Check string matrix
+>>> matrix = "HiiiiHaaaaaaaaaaa!!!"
+>>> matrix_divided(matrix, 3)
+matrix must be a matrix (list of lists) of integers/floats
+
+# Check empty sub-list in matrix
+>>> matrix = [[1, 2, 3], []]
+>>> matrix_divided(matrix, 3)
+matrix must be a matrix (list of lists) of integers/floats
+
+# Check div is None
+>>> matrix = [[1, 2, 3], [4, 5, 6]]
+>>> matrix_divided(matrix, None)
+div must be a number
+
+# Check nested list within matrix
+>>> matrix = [[1, 2, [3]], [4, 5, 6]]
+>>> matrix_divided(matrix, 3)
+matrix must be a matrix (list of lists) of integers/floats
+
+# Check double None
+>>> matrix_divided(None, None)
+matrix must be a matrix (list of lists) of integers/floats
