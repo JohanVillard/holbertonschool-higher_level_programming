@@ -34,11 +34,13 @@ def add_integer(a, b=98):
         if not isinstance(b, (int, float)):
             raise TypeError("b {:s}".format(int_err_msg))
 
-        sum = 0
-        sum = int(a) + int(b)
+        # Cast float into integer if necessary
+        if isinstance(a, float):
+            a = int(a)
+        if isinstance(b, float):
+            b = int(b)
 
-        return sum
+        return a + b
 
     except TypeError as e:
         print(e)  # Display the custom error message without traceback
-        return None
