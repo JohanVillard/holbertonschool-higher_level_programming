@@ -41,7 +41,7 @@ def add_integer(a, b=98):
 
         sum = a + b
 
-        return sum
-
     except TypeError as e:
         print(e)
+    else:
+        return sum
