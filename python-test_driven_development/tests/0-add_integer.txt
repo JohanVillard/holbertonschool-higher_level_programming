@@ -16,6 +16,10 @@
 >>> add_integer(7, 2.5)
 9
 
+# add integer and negative float
+>>> add_integer(7, -2.5)
+5
+
 # add string and integer
 >>> add_integer("yolo", 7)
 Traceback (most recent call last):
