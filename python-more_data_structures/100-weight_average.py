@@ -12,6 +12,8 @@ def weight_average(my_list=[]):
         average (float): ((1 * 2) + (2 * 1)
                          + (3 * 10) + (4 * 2)) / (2 + 1 + 10 + 2)
     """
+    if not my_list:
+        return 0
     prod = 0
     dividend = 0
     divisor = 0
