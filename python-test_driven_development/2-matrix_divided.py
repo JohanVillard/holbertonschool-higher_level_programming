@@ -48,7 +48,8 @@ def matrix_divided(matrix, div):
             if not row:
                 raise TypeError(mat_err_msg)
             for dividend in row:
-                if not isinstance(dividend, (int, float)) or isinstance(dividend, bool):
+                if (not isinstance(dividend, (int, float)) or 
+                        isinstance(dividend, bool)):
                     raise TypeError(mat_err_msg)
             if reference_size == 0:
                 reference_size = len(row)
