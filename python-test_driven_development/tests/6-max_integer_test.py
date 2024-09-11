@@ -59,6 +59,26 @@ class TestMaxInteger(unittest.TestCase):
         max_num = max_integer(test_list)
         self.assertEqual(6.2, max_num)
 
+    def test_big_list(self):
+        """Test if max_integer works with a number."""
+        test_list = [
+            100,
+            9,
+            9000000000,
+            6.43344,
+            -766666666768,
+            -465465.7876,
+            687678687687646,
+            0,
+            12,
+            -576576,
+            676,
+            0,
+        ]
+        # Call max_integer
+        max_num = max_integer(test_list)
+        self.assertEqual(687678687687646, max_num)
+
 
 if __name__ == "__main__":
     unittest.main()
