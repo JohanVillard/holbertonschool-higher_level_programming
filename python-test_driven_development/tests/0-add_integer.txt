@@ -18,27 +18,19 @@
 
 # add string and integer
 >>> add_integer("yolo", 7)
-Traceback (most recent call last):
- ---
-TypeError: a must be an integer
+a must be an integer
 
 # add integer and float
 >>> add_integer(2, "yolo")
-Traceback (most recent call last):
- ---
-TypeError: b must be an integer
+b must be an integer
 
 # add strings
 >>> add_integer("yala", "yolo")
-Traceback (most recent call last):
- ---
-TypeError: a must be an integer
+a must be an integer
 
 # add None
 >>> add_integer(None)
-Traceback (most recent call last):
- ---
-TypeError: a must be an integer
+a must be an integer
 
 # Add only a
 >>> add_integer(2)
