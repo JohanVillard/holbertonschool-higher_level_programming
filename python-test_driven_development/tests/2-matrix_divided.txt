@@ -133,3 +133,13 @@ matrix must be a matrix (list of lists) of integers/floats
 # Check double None
 >>> matrix_divided(None, None)
 matrix must be a matrix (list of lists) of integers/floats
+
+# Check 0 dividend
+>>> matrix = [[0, 0, 0], [0, 0, 0]]
+>>> print(matrix_divided(matrix, 2))
+[[0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]
+
+# Check 0 dividend
+>>> matrix = [[4], [6]]
+>>> print(matrix_divided(matrix, 2))
+[[2.0], [3.0]]
