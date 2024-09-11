@@ -27,11 +27,12 @@ def add_integer(a, b=98):
     Returns:
         sum (int): Is the result of the additiion of a and b.
     """
+    int_err_msg = "must be an integer"
     try:
         if not isinstance(a, (int, float)):
-            raise TypeError("a must be an integer")
+            raise TypeError("a {:s}".format(int_err_msg))
         if not isinstance(b, (int, float)):
-            raise TypeError("b must be an integer")
+            raise TypeError("b {:s}".format(int_err_msg))
 
         sum = 0
         sum = int(a) + int(b)
