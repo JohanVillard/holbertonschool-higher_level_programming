@@ -39,6 +39,12 @@ def matrix_divided(matrix, div):
         if div == 0:
             raise ZeroDivisionError("division by zero")
 
+        if not matrix:
+            raise TypeError(
+                    "matrix must be a matrix (list of lists)"
+                    " of integers/floats"
+                )
+
         for row in matrix:
             if not row:
                 raise TypeError(
