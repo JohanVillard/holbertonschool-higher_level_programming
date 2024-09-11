@@ -32,6 +32,7 @@ def matrix_divided(matrix, div):
         ZeroDivisionError: If div is equal to 0.
     """
     reference_size = 0
+    mat_err_msg = "matrix must be a matrix (list of lists) of integers/floats"
     try:
         if not isinstance(div, (int, float)):
             raise TypeError("div must be a number")
@@ -40,28 +41,18 @@ def matrix_divided(matrix, div):
             raise ZeroDivisionError("division by zero")
 
         if not matrix:
-            raise TypeError(
-                    "matrix must be a matrix (list of lists)"
-                    " of integers/floats"
-                )
+            raise TypeError(mat_err_msg)
 
         for row in matrix:
             if not row:
-                raise TypeError(
-                    "matrix must be a matrix (list of lists)"
-                    " of integers/floats"
-                )
+                raise TypeError(mat_err_msg)
             for dividend in row:
-                if not row or not isinstance(dividend, (int, float)):
-                    raise TypeError(
-                        "matrix must be a matrix (list of lists)"
-                        " of integers/floats"
-                    )
+                if not isinstance(dividend, (int, float)) or isinstance(dividend, bool):
+                    raise TypeError(mat_err_msg)
             if reference_size == 0:
                 reference_size = len(row)
             elif reference_size != len(row):
-                raise TypeError("Each row of the matrix"
-                                " must have the same size")
+                raise TypeError("Each row of the matrix must have the same size")
 
         new_matrix = []
         for row in matrix:

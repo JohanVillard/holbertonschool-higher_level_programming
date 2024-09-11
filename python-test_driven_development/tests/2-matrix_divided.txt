@@ -64,3 +64,10 @@ matrix must be a matrix (list of lists) of integers/floats
 >>> matrix = []
 >>> matrix_divided(matrix, 3)
 matrix must be a matrix (list of lists) of integers/floats
+
+# Check boolean in matrix
+>>> matrix = [[True, 2, 3], [4, 5, 6]]
+>>> matrix_divided(matrix, 3)
+matrix must be a matrix (list of lists) of integers/floats
+
+
