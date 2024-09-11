@@ -42,3 +42,8 @@ Traceback (most recent call last):
      ...
 TypeError: add_integer() missing 1 required positional argument: 'a'
 
+# add big integers
+>>> add_integer(7687576576, 897686876)
+8585263452
+
+
