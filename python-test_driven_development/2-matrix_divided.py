@@ -51,15 +51,15 @@ def matrix_divided(matrix, div):
                 reference_size = len(row)
             elif reference_size != len(row):
                 raise TypeError(size_err_msg)
-            for dividend in row:
-                if not isinstance(dividend, (int, float)) or isinstance(dividend, bool):
+            for num in row:
+                if not isinstance(num, (int, float)) or isinstance(num, bool):
                     raise TypeError(mat_err_msg)
 
         new_matrix = []
         for row in matrix:
             new_col = []
-            for dividend in row:
-                new_col.append(round(dividend / div, 2))
+            for num in row:
+                new_col.append(round(num / div, 2))
             new_matrix.append(new_col)
 
         return new_matrix
