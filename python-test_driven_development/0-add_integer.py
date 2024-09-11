@@ -28,19 +28,15 @@ def add_integer(a, b=98):
         sum (int): Is the result of the additiion of a and b.
     """
     int_err_msg = "must be an integer"
-    try:
-        if not isinstance(a, (int, float)):
-            raise TypeError("a {:s}".format(int_err_msg))
-        if not isinstance(b, (int, float)):
-            raise TypeError("b {:s}".format(int_err_msg))
+    if not isinstance(a, (int, float)):
+        raise TypeError("a {:s}".format(int_err_msg))
+    if not isinstance(b, (int, float)):
+        raise TypeError("b {:s}".format(int_err_msg))
 
-        # Cast float into integer if necessary
-        if isinstance(a, float):
-            a = int(a)
-        if isinstance(b, float):
-            b = int(b)
+    # Cast float into integer if necessary
+    if isinstance(a, float):
+        a = int(a)
+    if isinstance(b, float):
+        b = int(b)
 
-        return a + b
-
-    except TypeError as e:
-        print(e)  # Display the custom error message without traceback
+    return a + b
