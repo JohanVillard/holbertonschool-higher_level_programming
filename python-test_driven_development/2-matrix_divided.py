@@ -40,17 +40,20 @@ def matrix_divided(matrix, div):
             raise ZeroDivisionError("division by zero")
 
         for row in matrix:
-            size = 0
+            if not row:
+                raise TypeError(
+                    "matrix must be a matrix (list of lists)"
+                    " of integers/floats"
+                )
             for dividend in row:
-                if not isinstance(dividend, (int, float)):
+                if not row or not isinstance(dividend, (int, float)):
                     raise TypeError(
                         "matrix must be a matrix (list of lists)"
                         " of integers/floats"
                     )
-                size += 1
             if reference_size == 0:
-                reference_size = size
-            elif reference_size > 0 and reference_size != size:
+                reference_size = len(row)
+            elif reference_size != len(row):
                 raise TypeError("Each row of the matrix"
                                 " must have the same size")
 
