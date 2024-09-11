@@ -33,10 +33,4 @@ def add_integer(a, b=98):
     if not isinstance(b, (int, float)):
         raise TypeError("b {:s}".format(int_err_msg))
 
-    # Cast float into integer if necessary
-    if isinstance(a, float):
-        a = int(a)
-    if isinstance(b, float):
-        b = int(b)
-
-    return a + b
+    return int(a) + int(b)
