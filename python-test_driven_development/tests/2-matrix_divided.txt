@@ -70,4 +70,7 @@ matrix must be a matrix (list of lists) of integers/floats
 >>> matrix_divided(matrix, 3)
 matrix must be a matrix (list of lists) of integers/floats
 
-
+# Check div as a boolean
+>>> matrix = [[1, 2, 3], [4, 5, 6]]
+>>> matrix_divided(matrix, True)
+div must be a number
