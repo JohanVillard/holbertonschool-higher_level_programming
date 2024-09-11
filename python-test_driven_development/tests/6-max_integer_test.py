@@ -52,6 +52,13 @@ class TestMaxInteger(unittest.TestCase):
         max_num = max_integer(test_list)
         self.assertEqual(100, max_num)
 
+    def test_float_integer_list(self):
+        """Test if max_integer works with float and integer."""
+        test_list = [-1000, 0, 6.2]
+        # Call max_integer
+        max_num = max_integer(test_list)
+        self.assertEqual(6.2, max_num)
+
 
 if __name__ == "__main__":
     unittest.main()
