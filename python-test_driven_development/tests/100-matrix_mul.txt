@@ -160,7 +160,7 @@ Traceback (most recent call last):
 	---
 IndexError: list index out of range
 
-# m_a is a list of lists containing NaN
+# m_a is a list of lists containing inf
 >>> m_a = [[1, 2], [3, 4]]
 >>> m_b = [[float("inf")], [float("inf")]]
 >>> matrix_mul(m_a, m_b)
@@ -168,4 +168,19 @@ Traceback (most recent call last):
  ---
 ValueError: m_a and m_b can't be multiplied
 
+# m_a is a list of lists containing None
+>>> m_a = [[None], [None]]
+>>> m_b = [[1, 2], [3, 4]]
+>>> matrix_mul(m_a, m_b)
+Traceback (most recent call last):
+ ---
+TypeError: m_a should contain only integers or floats
+
+# m_a is a list of lists containing None
+>>> m_a = [[1, 2], [3, 4]]
+>>> m_b = [[None], [None]]
+>>> matrix_mul(m_a, m_b)
+Traceback (most recent call last):
+ ---
+TypeError: m_b should contain only integers or floats
 
