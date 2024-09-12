@@ -153,3 +153,13 @@ matrix must be a matrix (list of lists) of integers/floats
 >>> matrix = [[float("inf")]]
 >>> print(matrix_divided(matrix, 2))
 [[inf]]
+
+# Check Nan divisor
+>>> matrix = [[10]]
+>>> print(matrix_divided(matrix, float("NaN")))
+[[nan]]
+
+# Check infinity divisor
+>>> matrix = [[2]]
+>>> print(matrix_divided(matrix, float("inf")))
+[[0.0]]
