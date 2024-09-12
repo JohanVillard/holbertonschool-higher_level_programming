@@ -34,35 +34,30 @@ def matrix_divided(matrix, div):
     reference_size = 0
     mat_err_msg = "matrix must be a matrix (list of lists) of integers/floats"
     size_err_msg = "Each row of the matrix must have the same size"
-    try:
-        if not matrix:  # Check if matrix is empty
+    if not matrix:  # Check if matrix is empty
+        raise TypeError(mat_err_msg)
+
+    # Check the type of div
+    if not isinstance(div, (int, float)) or isinstance(div, bool):
+        raise TypeError("div must be a number")
+
+    if div == 0:
+        raise ZeroDivisionError("division by zero")
+
+    # Check and create an new divised array
+    new_matrix = []
+    for row in matrix:
+        if not row:  # Check if row is empty
             raise TypeError(mat_err_msg)
-
-        # Check the type of div
-        if not isinstance(div, (int, float)) or isinstance(div, bool):
-            raise TypeError("div must be a number")
-
-        if div == 0:
-            raise ZeroDivisionError("division by zero")
-
-        # Check and create an new divised array
-        new_matrix = []
-        for row in matrix:
-            if not row:  # Check if row is empty
+        if reference_size == 0:  # Get the size of a row if not
+            reference_size = len(row)
+        elif reference_size != len(row):  # Compare size of all rows
+            raise TypeError(size_err_msg)
+        new_col = []
+        for num in row:
+            if not isinstance(num, (int, float)) or isinstance(num, bool):
                 raise TypeError(mat_err_msg)
-            if reference_size == 0:  # Get the size of a row if not
-                reference_size = len(row)
-            elif reference_size != len(row):  # Compare size of all rows
-                raise TypeError(size_err_msg)
-            new_col = []
-            for num in row:
-                if not isinstance(num, (int, float)) or isinstance(num, bool):
-                    raise TypeError(mat_err_msg)
-                new_col.append(round(num / div, 2))  # Add divided number
-            new_matrix.append(new_col)  # Add row in new list
+            new_col.append(round(num / div, 2))  # Add divided number
+        new_matrix.append(new_col)  # Add row in new list
 
-        return new_matrix
-    except TypeError as e:
-        print(e)
-    except ZeroDivisionError as e:
-        print(e)
+    return new_matrix
