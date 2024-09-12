@@ -139,7 +139,17 @@ matrix must be a matrix (list of lists) of integers/floats
 >>> print(matrix_divided(matrix, 2))
 [[0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]
 
-# Check 0 dividend
+# Check 1 element by row
 >>> matrix = [[4], [6]]
 >>> print(matrix_divided(matrix, 2))
 [[2.0], [3.0]]
+
+# Check Nan
+>>> matrix = [[float("NaN")]]
+>>> print(matrix_divided(matrix, 2))
+[[nan]]
+
+# Check infinity
+>>> matrix = [[float("inf")]]
+>>> print(matrix_divided(matrix, 2))
+[[inf]]
