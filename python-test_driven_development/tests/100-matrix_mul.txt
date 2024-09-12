@@ -203,3 +203,9 @@ TypeError: matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'
 >>> m_b = [[3]]
 >>> matrix_mul(m_a, m_b)
 [[6]]
+
+# Only 0
+>>> m_a = [[0, 0], [0, 0]]
+>>> m_b = [[1, 2], [3, 4]]
+>>> matrix_mul(m_a, m_b)
+[[0, 0], [0, 0]]
