@@ -136,3 +136,20 @@ Traceback (most recent call last):
  ---
 ValueError: m_a and m_b can't be multiplied
 
+# m_a is a list of lists containing NaN
+>>> m_a = [[float("NaN")], [float("NaN")]]
+>>> m_b = [[1, 2], [3, 4]]
+>>> matrix_mul(m_a, m_b)
+Traceback (most recent call last):
+	---
+IndexError: list index out of range
+
+# m_a is a list of lists containing NaN
+>>> m_a = [[1, 2], [3, 4]]
+>>> m_b = [[float("NaN")], [float("NaN")]]
+>>> matrix_mul(m_a, m_b)
+Traceback (most recent call last):
+ ---
+ValueError: m_a and m_b can't be multiplied
+
+
