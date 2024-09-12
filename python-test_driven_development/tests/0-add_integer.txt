@@ -58,8 +58,14 @@ TypeError: add_integer() missing 1 required positional argument: 'a'
 >>> add_integer(7687576576, 897686876)
 8585263452
 
-# add Not a Number 
+# add Not a Number for a 
 >>> add_integer(float("NaN"))
+Traceback (most recent call last):
+ ---
+ValueError: cannot convert float NaN to integer
+
+# add Not a Number for b
+>>> add_integer(1, float("NaN"))
 Traceback (most recent call last):
  ---
 ValueError: cannot convert float NaN to integer
