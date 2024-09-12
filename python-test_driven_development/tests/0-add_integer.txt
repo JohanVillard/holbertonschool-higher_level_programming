@@ -20,6 +20,13 @@
 >>> add_integer(7, -2.5)
 5
 
+# add 3 integers
+>>> add_integer(7, 1, 2)
+Traceback (most recent call last):
+ ---
+TypeError: add_integer() takes from 1 to 2 positional arguments but 3 were given
+
+
 # add string and integer
 >>> add_integer("yolo", 7)
 Traceback (most recent call last):
