@@ -1,5 +1,69 @@
 >>> lazy_matrix_mul = __import__('101-lazy_matrix_mul').lazy_matrix_mul
 
+## Return a good result
+
+# Only positive integer
+>>> m_a = [[1, 2], [3, 4]]
+>>> m_b = [[1, 2], [3, 4]]
+>>> lazy_matrix_mul(m_a, m_b)
+array([[ 7, 10],
+       [15, 22]])
+
+# With positive and negative integer
+>>> m_a = [[-1, 2], [3, 4]]
+>>> m_b = [[1, 2], [3, -4]]
+>>> lazy_matrix_mul(m_a, m_b)
+array([[  5, -10],
+       [ 15, -10]])
+
+# m_a is a list of lists containing NaN
+>>> m_a = [[1, 2], [3, 4]]
+>>> m_b = [[float("NaN")], [float("NaN")]]
+>>> lazy_matrix_mul(m_a, m_b)
+array([[nan],
+       [nan]])
+
+# m_a is a list of lists containing inf 
+>>> m_a = [[float("inf"), float("inf")], [float("inf"), float("inf")]]
+>>> m_b = [[1, 2], [3, 4]]
+>>> lazy_matrix_mul(m_a, m_b)
+array([[inf, inf],
+       [inf, inf]])
+
+# m_a is a list of lists containing inf
+>>> m_a = [[1, 2], [3, 4]]
+>>> m_b = [[float("inf"), float("inf")], [float("inf"), float("inf")]]
+>>> lazy_matrix_mul(m_a, m_b)
+array([[inf, inf],
+       [inf, inf]])
+
+# mul float
+>>> m_a = [[1.0, 2.0], [3.0, 4]]
+>>> m_b = [[1, 2], [3, 4]]
+>>> lazy_matrix_mul(m_a, m_b)
+array([[ 7., 10.],
+       [15., 22.]])
+
+# mul float with negative
+>>> m_a = [[1.0, 2.0], [3.0, -4.0]]
+>>> m_b = [[1, -2], [3, 4]]
+>>> lazy_matrix_mul(m_a, m_b)
+array([[  7.,   6.],
+       [ -9., -22.]])
+
+# m_a and m_b are both 1x1 matrices
+>>> m_a = [[2]]
+>>> m_b = [[3]]
+>>> lazy_matrix_mul(m_a, m_b)
+array([[6]])
+
+# Only 0
+>>> m_a = [[0, 0], [0, 0]]
+>>> m_b = [[0, 0], [0, 0]]
+>>> lazy_matrix_mul(m_a, m_b)
+array([[0, 0],
+       [0, 0]])
+
 # m_a is a tuple
 >>> m_a = ([1, 2], [3, 4])
 >>> m_b = [[1, 2], [3, 4]]
@@ -14,6 +78,20 @@ array([[ 7, 10],
 array([[ 7, 10],
        [15, 22]])
 
+# m_a is a list of tuples
+>>> m_a = [(1, 2), (3, 4)]
+>>> m_b = [[1, 2], [3, 4]]
+>>> lazy_matrix_mul(m_a, m_b)
+array([[ 7, 10],
+       [15, 22]])
+
+# m_b is a list of tuples
+>>> m_a = [[1, 2], [3, 4]]
+>>> m_b = [(1, 2), (3, 4)]
+>>> lazy_matrix_mul(m_a, m_b)
+array([[ 7, 10],
+       [15, 22]])
+
 # m_a is a string
 >>> m_a = "[[1, 2], [3, 4]]"
 >>> m_b = [[1, 2], [3, 4]]
@@ -21,7 +99,6 @@ array([[ 7, 10],
 Traceback (most recent call last):
  ---
 numpy._core._exceptions._UFuncNoLoopError: ufunc 'matmul' did not contain a loop with signature matching types (dtype('<U16'), dtype('int64')) -> None
-
 
 # m_b is not a list
 >>> m_a = [[1, 2], [3, 4]]
@@ -46,20 +123,6 @@ ValueError: matmul: Input operand 0 does not have enough dimensions (has 0, gufu
 Traceback (most recent call last):
  ---
 ValueError: matmul: Input operand 1 does not have enough dimensions (has 0, gufunc core with signature (n?,k),(k,m?)->(n?,m?) requires 1)
-
-# m_a is a list of tuples
->>> m_a = [(1, 2), (3, 4)]
->>> m_b = [[1, 2], [3, 4]]
->>> lazy_matrix_mul(m_a, m_b)
-array([[ 7, 10],
-       [15, 22]])
-
-# m_b is a list of tuples
->>> m_a = [[1, 2], [3, 4]]
->>> m_b = [(1, 2), (3, 4)]
->>> lazy_matrix_mul(m_a, m_b)
-array([[ 7, 10],
-       [15, 22]])
 
 # m_a is an empty list
 >>> m_a = []
@@ -141,27 +204,6 @@ Traceback (most recent call last):
  ---
 ValueError: matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 2 is different from 1)
 
-# m_a is a list of lists containing NaN
->>> m_a = [[1, 2], [3, 4]]
->>> m_b = [[float("NaN")], [float("NaN")]]
->>> lazy_matrix_mul(m_a, m_b)
-array([[nan],
-       [nan]])
-
-# m_a is a list of lists containing inf 
->>> m_a = [[float("inf"), float("inf")], [float("inf"), float("inf")]]
->>> m_b = [[1, 2], [3, 4]]
->>> lazy_matrix_mul(m_a, m_b)
-array([[inf, inf],
-       [inf, inf]])
-
-# m_a is a list of lists containing inf
->>> m_a = [[1, 2], [3, 4]]
->>> m_b = [[float("inf"), float("inf")], [float("inf"), float("inf")]]
->>> lazy_matrix_mul(m_a, m_b)
-array([[inf, inf],
-       [inf, inf]])
-
 # m_a is a list of lists containing None
 >>> m_a = [[None], [None]]
 >>> m_b = [[1, 2], [3, 4]]
@@ -179,39 +221,6 @@ Traceback (most recent call last):
 TypeError: unsupported operand type(s) for *: 'int' and 'NoneType'
 
 # No args
->>> lazy_matrix_mul()
-Traceback (most recent call last):
- ---
-TypeError: lazy_matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'
-
-# mul float
->>> m_a = [[1.0, 2.0], [3.0, 4]]
->>> m_b = [[1, 2], [3, 4]]
->>> lazy_matrix_mul(m_a, m_b)
-array([[ 7., 10.],
-       [15., 22.]])
-
-# mul float with negative
->>> m_a = [[1.0, 2.0], [3.0, -4.0]]
->>> m_b = [[1, -2], [3, 4]]
->>> lazy_matrix_mul(m_a, m_b)
-array([[  7.,   6.],
-       [ -9., -22.]])
-
-# m_a and m_b are both 1x1 matrices
->>> m_a = [[2]]
->>> m_b = [[3]]
->>> lazy_matrix_mul(m_a, m_b)
-array([[6]])
-
-# Only 0
->>> m_a = [[0, 0], [0, 0]]
->>> m_b = [[1, 2], [3, 4]]
->>> lazy_matrix_mul(m_a, m_b)
-array([[0, 0],
-       [0, 0]])
-
-# No arguments
 >>> lazy_matrix_mul()
 Traceback (most recent call last):
  ---
