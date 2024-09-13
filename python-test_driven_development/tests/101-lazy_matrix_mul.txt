@@ -92,6 +92,23 @@ array([[ 7, 10],
 array([[ 7, 10],
        [15, 22]])
 
+# m_b is a tuple of tuples
+>>> m_a = ((1, 2), (3, 4))
+>>> m_b = ((1, 2), (3, 4))
+>>> lazy_matrix_mul(m_a, m_b)
+array([[ 7, 10],
+       [15, 22]])
+
+## Raise exception
+
+# m_b is a set of tuples
+>>> m_a = {(1, 2), (3, 4)}
+>>> m_b = {(1, 2), (3, 4)}
+>>> lazy_matrix_mul(m_a, m_b)
+Traceback (most recent call last):
+ ---
+ValueError: matmul: Input operand 0 does not have enough dimensions (has 0, gufunc core with signature (n?,k),(k,m?)->(n?,m?) requires 1)
+
 # m_a is a string
 >>> m_a = "[[1, 2], [3, 4]]"
 >>> m_b = [[1, 2], [3, 4]]
