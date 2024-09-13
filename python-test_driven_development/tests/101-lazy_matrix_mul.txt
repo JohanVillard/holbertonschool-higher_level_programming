@@ -216,3 +216,10 @@ array([[0, 0],
 Traceback (most recent call last):
  ---
 TypeError: lazy_matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'
+
+# m_a and m_b are integers
+>>> lazy_matrix_mul(6, 2)
+Traceback (most recent call last):
+ ---
+ValueError: matmul: Input operand 0 does not have enough dimensions (has 0, gufunc core with signature (n?,k),(k,m?)->(n?,m?) requires 1)
+
