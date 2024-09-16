@@ -14,8 +14,8 @@ class Square:
                         Must be an integer >= 0.
         """
         # Private attribute
-        self.__size = size
-        self.__position = position
+        self.size = size
+        self.position = position
 
     @property
     def size(self):
@@ -64,6 +64,7 @@ class Square:
 
         Raises:
             TypeError: If 'position' is not a tuple.
+                       if tuple has not 2 elements.
                        if 'position' has not 2 positives integers is not tuple.
         """
         if not isinstance(value, tuple):
