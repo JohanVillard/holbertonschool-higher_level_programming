@@ -45,6 +45,8 @@ class Square:
         if value < 0:
             raise ValueError("size must be >= 0")
 
+        self.__size = value  # Private attribute
+
     @property
     def position(self):
         """
@@ -62,16 +64,14 @@ class Square:
 
         Raises:
             TypeError: If 'position' is not a tuple.
-                       if 'position' has not 2 positives integers inot tuple.
+                       if 'position' has not 2 positives integers is not tuple.
         """
         if not isinstance(value, tuple):
-            raise TypeError("position must be a tuple of 2 positive integers.")
-        if not isinstance(tuple[0], int) or not isinstance(tuple[1]):
-            raise TypeError("position must be a tuple of 2 positive integers.")
+            raise TypeError("position must be a tuple of 2 positive integers")
+        if not isinstance(value[0], int) or not isinstance(value[1], int):
+            raise TypeError("position must be a tuple of 2 positive integers")
 
         self.__position = value
-
-        self.__size = value  # Private attribute
 
     def area(self):
         """
