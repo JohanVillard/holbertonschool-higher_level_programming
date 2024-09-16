@@ -13,17 +13,9 @@ class Square:
             size (int): The size of one side of the square.
                         Must be an integer >= 0.
         """
-        self.__size = size  # Private attribute
+        # Private attribute
+        self.__size = size
         self.__position = position
-
-    def area(self):
-        """
-        Compute the area of square.
-
-        Returns:
-            int: the result of side * side.
-        """
-        return self.__size * self.__size
 
     @property
     def size(self):
@@ -53,7 +45,42 @@ class Square:
         if value < 0:
             raise ValueError("size must be >= 0")
 
+    @property
+    def position(self):
+        """
+        Get the position at the coordinates.
+
+        Returns:
+            position (tuple): The position at the tuple's coordinates.
+        """
+        return self.__position  # private attribute
+
+    @position.setter
+    def position(self, value):
+        """
+        Set the position at the coordinates.
+
+        Raises:
+            TypeError: If 'position' is not a tuple.
+                       if 'position' has not 2 positives integers inot tuple.
+        """
+        if not isinstance(value, tuple):
+            raise TypeError("position must be a tuple of 2 positive integers.")
+        if not isinstance(tuple[0], int) or not isinstance(tuple[1]):
+            raise TypeError("position must be a tuple of 2 positive integers.")
+
+        self.__position = value
+
         self.__size = value  # Private attribute
+
+    def area(self):
+        """
+        Compute the area of square.
+
+        Returns:
+            int: the result of side * side.
+        """
+        return self.__size * self.__size
 
     def my_print(self):
         """
@@ -85,29 +112,3 @@ class Square:
                 for j in range(self.size):
                     print("#", end="")
                 print()
-
-    @property
-    def position(self):
-        """
-        Get the position at the coordinates.
-
-        Returns:
-            position (tuple): The position at the tuple's coordinates.
-        """
-        return self.__position  # private attribute
-
-    @position.setter
-    def position(self, value):
-        """
-        Set the position at the coordinates.
-
-        Raises:
-            TypeError: If 'position' is not a tuple.
-                       if 'position' has not 2 positives integers inot tuple.
-        """
-        if not isinstance(value, tuple):
-            raise TypeError("position must be a tuple of 2 positive integers.")
-        if not isinstance(tuple[0], int) or not isinstance(tuple[1]):
-            raise TypeError("position must be a tuple of 2 positive integers.")
-
-        self.__position = value
