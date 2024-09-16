@@ -14,7 +14,7 @@ class Square:
                         Must be an integer >= 0.
         """
         # Private attribute
-        self.__size = size
+        self.size = size
         self.position = position
 
     @property
@@ -25,7 +25,7 @@ class Square:
         Returns:
             int: The size as an integer.
         """
-        return self._size  # Private attribute
+        return self.__size  # Private attribute
 
     @size.setter
     def size(self, value):
