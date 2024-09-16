@@ -13,4 +13,4 @@ class Square:
             size (int): The size of one side of the square.
                         No type/value verification.
         """
-        self._size = size
+        self.__size = size
