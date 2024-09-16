@@ -45,7 +45,7 @@ class Square:
         if value < 0:
             raise ValueError("size must be >= 0")
 
-        self._size = value  # Private attribute
+        self.__size = value  # Private attribute
 
     @property
     def position(self):
