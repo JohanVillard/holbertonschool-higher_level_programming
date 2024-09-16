@@ -14,7 +14,7 @@ class Square:
                         Must be an integer >= 0.
         """
         # Private attribute
-        self.size = size
+        self.__size = size
         self.position = position
 
     @property
