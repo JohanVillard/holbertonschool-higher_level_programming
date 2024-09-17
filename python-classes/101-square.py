@@ -126,10 +126,12 @@ class Square:
 
         If `position[1] > 0`, the string starts with `position[1]` blank lines.
 
-        Each row of the square contains `position[0]` spaces before the '#' characters to represent the horizontal offset.
+        Each row of the square contains `position[0]` spaces before
+        the '#' characters to represent the horizontal offset.
 
         Returns:
-            str: The string representation of the square, including any blank lines and spaces for the position.
+            str: The string representation of the square,
+            including any blank lines and spaces for the position.
         """
         if self.size == 0:
             print()
