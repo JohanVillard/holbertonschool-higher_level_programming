@@ -206,5 +206,6 @@ class Rectangle:
             Rectangle: A new instance of the Rectangle class with equal
         width and height.
         """
-        height = width = size
-        return cls(height, width)
+        width = height = size
+        if width == height == size:
+            return cls(height, width)
