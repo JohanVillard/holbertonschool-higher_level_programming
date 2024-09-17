@@ -134,7 +134,7 @@ class Rectangle:
 
         for i in range(self.height):
             for j in range(self.width):
-                print("{}".format(self.print_symbol), end="")
+                print("{}".format("#"), end="")
 
             if i < self.height - 1:
                 print()
