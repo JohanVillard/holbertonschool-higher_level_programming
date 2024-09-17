@@ -164,9 +164,9 @@ class Rectangle:
         """
         # Check if the parameters are instance of Rectangle
         if not isinstance(rect_1, Rectangle):
-            print("rect_1 must be an instance of Rectangle")
+            raise TypeError("rect_1 must be an instance of Rectangle")
         if not isinstance(rect_2, Rectangle):
-            print("rect_2 must be an instance of Rectangle")
+            raise TypeError("rect_2 must be an instance of Rectangle")
 
         # Compute the areas of the 2 rectangles
         rect_1_area = rect_1.area()
