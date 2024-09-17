@@ -134,7 +134,7 @@ class Rectangle:
 
         for i in range(self.height):
             for j in range(self.width):
-                print("{}".format("#"), end="")
+                print("{}".format(self.print_symbol), end="")
 
             if i < self.height - 1:
                 print()
@@ -198,7 +198,7 @@ class Rectangle:
         This is a factory method that returns a Rectangle instance where
         both the 'width' and 'height' are set to the provided 'size' value.
 
-        Args:
+        Parameters:
             size (int, optional): The size for both the width and height of the
                                   rectangle. Defaults to 0.
 
@@ -206,4 +206,5 @@ class Rectangle:
             Rectangle: A new instance of the Rectangle class with equal
         width and height.
         """
-        return cls(size, size)
+        height = width = size
+        return cls(height, width)
