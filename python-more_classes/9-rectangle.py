@@ -39,10 +39,6 @@ class Rectangle:
                          It must be a non-negative integer.
             height (int): The height of the rectangle.
                           It must be a non-negative integer.
-
-        Raises:
-            TypeError: If width or height is not an integer.
-            ValueError: If width or height is less than 0.
         """
         self.height = height
         self.width = width
