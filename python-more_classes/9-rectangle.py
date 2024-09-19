@@ -167,7 +167,7 @@ class Rectangle:
              str: A string in the format 'Rectangle(width, height)', where
              'width' and 'height' are the dimensions of the rectangle.
         """
-        return f"Rectangle({self.__width}, {self.__height})"
+        return "Rectangle({}, {})".format(self.__width, self.__height)
 
     def __del__(self):
         """
@@ -236,4 +236,4 @@ class Rectangle:
             Rectangle: A new instance of the Rectangle class with equal
                        width and height.
         """
-        return Rectangle(height=size, width=size)
+        return cls(height=size, width=size)
