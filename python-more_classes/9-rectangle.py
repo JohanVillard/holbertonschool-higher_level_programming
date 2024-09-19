@@ -97,7 +97,7 @@ class Rectangle:
 
     def area(self):
         """
-        Compute the area of te rectangle.
+        Compute the area of the rectangle.
 
         Returns:
             int: The current area of the rectangle.
@@ -108,7 +108,7 @@ class Rectangle:
         """
         Compute the perimeter of the rectangle.
 
-        If 'width' or 'height' are equal to 0, perimeter equel 0.
+        If 'width' or 'height' are equal to 0, perimeter equal 0.
 
         Returns:
             int: The current perimeter of the rectangle.
@@ -132,26 +132,40 @@ class Rectangle:
         if self.width == 0 or self.height == 0:
             return ""
 
+        symbol_list = []
         for i in range(self.height):
-            for j in range(self.width):
-                print("{}".format(self.print_symbol), end="")
+            symbol_list.append(self.width * self.print_symbol)
 
-            if i < self.height - 1:
-                print()
-
-        return str()
+        return "\n".join(symbol_list)
 
     def __repr__(self):
         """
-        Print a representation of the rectangle.
+        Return a string representation of the Rectangle instance.
 
-        Returns:
-            ....
+         This method is used to provide an unambiguous string representation
+         of the rectangle, typically for debugging or logging purposes. It
+         returns a string that can be used to recreate the rectangle object
+         with the same width and height.
+
+         Returns:
+             str: A string in the format 'Rectangle(width, height)', where
+             'width' and 'height' are the dimensions of the rectangle.
         """
         return f"Rectangle({self.width}, {self.height})"
 
     def __del__(self):
-        """Delete an instance of rectangle."""
+        """
+        Handle the deletion of a Rectangle instance.
+
+        This method is called when the instance is about to be destroyed.
+        It decreases the class variable `number_of_instances` by one and
+        prints a farewell message to the console.
+
+        Side Effects:
+            - Decrements the `Rectangle.number_of_instances` class variable.
+            - Prints a message 'Bye rectangle...' to indicate that the
+            object is being deleted.
+        """
         Rectangle.number_of_instances -= 1
         print("Bye rectangle...")
 
@@ -204,6 +218,6 @@ class Rectangle:
 
         Returns:
             Rectangle: A new instance of the Rectangle class with equal
-        width and height.
+                       width and height.
         """
         return cls(height=size, width=size)
