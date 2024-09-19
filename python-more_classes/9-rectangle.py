@@ -40,8 +40,8 @@ class Rectangle:
             height (int): The height of the rectangle.
                           It must be a non-negative integer.
         """
-        self.height = height
         self.width = width
+        self.height = height
 
         Rectangle.number_of_instances += 1
 
