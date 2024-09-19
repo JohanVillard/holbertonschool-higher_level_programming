@@ -118,7 +118,7 @@ class Rectangle:
         Returns:
             int: The current area of the rectangle.
         """
-        return self.width * self.height
+        return self.__width * self.__height
 
     def perimeter(self):
         """
@@ -129,7 +129,7 @@ class Rectangle:
         Returns:
             int: The current perimeter of the rectangle.
         """
-        if self.width == 0 or self.height == 0:
+        if self.__width == 0 or self.__height == 0:
             return 0
 
         return 2 * (self.width + self.height)
@@ -145,12 +145,12 @@ class Rectangle:
             str: A string representation of the rectangle using 'print_symbol',
                  or an empty string if the rectangle has no area.
         """
-        if self.width == 0 or self.height == 0:
+        if self.__width == 0 or self.__height == 0:
             return ""
 
         symbol_list = []
-        for i in range(self.height):
-            symbol_list.append(self.width * self.print_symbol)
+        for i in range(self.__height):
+            symbol_list.append(self.__width * self.print_symbol)
 
         return "\n".join(symbol_list)
 
@@ -167,7 +167,7 @@ class Rectangle:
              str: A string in the format 'Rectangle(width, height)', where
              'width' and 'height' are the dimensions of the rectangle.
         """
-        return f"Rectangle({self.width}, {self.height})"
+        return f"Rectangle({self.__width}, {self.__height})"
 
     def __del__(self):
         """
