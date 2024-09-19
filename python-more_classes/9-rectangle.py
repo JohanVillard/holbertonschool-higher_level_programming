@@ -146,7 +146,7 @@ class Rectangle:
 
         symbol_list = []
         for i in range(self.__height):
-            symbol_list.append(self.__width * self.print_symbol)
+            symbol_list.append(self.__width * str(self.print_symbol))
 
         return "\n".join(symbol_list)
 
