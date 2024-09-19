@@ -1,5 +1,21 @@
 #!/usr/bin/python3
-"""This module defines a 'Rectangle' class."""
+"""
+This module defines a 'Rectangle' class.
+
+The Rectangle class represent a geometric rectangle and allows for the
+manipulation of its dimansions (with and height). It provides functionality
+for calculating the rectangle's area, perimter, and displaying the rectangle
+as a string. Additionaly, it offers comparison between two rectangle instances
+based on their areas and a factory method for creating squared-shaped
+rectangles.
+
+Attributes:
+    number_of_instances (int): A class attribute that keeps track of the number
+                               of active Rectangle instances.
+    print_symbol (any): A class attribute that defines the symbol used for
+                        string representation of the rectangle.
+                        The default symbol is '#'.
+"""
 
 
 class Rectangle:
