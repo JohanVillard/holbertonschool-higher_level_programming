@@ -13,7 +13,6 @@ class Square:
             size (int): The size of one side of the square.
                         Must be an integer >= 0.
         """
-        # Private attribute
         self.size = size
         self.position = position
 
