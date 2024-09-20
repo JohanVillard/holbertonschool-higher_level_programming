@@ -104,17 +104,17 @@ class Square:
         if self.size == 0:
             print()
         else:
-            if self.position[1] > 0:
+            if self.__position[1] > 0:
                 # Print blank line before
-                for i in range(self.position[1]):
+                for i in range(self.i__position[1]):
                     print()
 
             for i in range(self.size):
                 # Insert space
-                for k in range(self.position[0]):
+                for k in range(self.__position[0]):
                     print(" ", end="")
                 # Print square
-                for j in range(self.size):
+                for j in range(self.__size):
                     print("#", end="")
 
     def __str__(self):
@@ -134,15 +134,15 @@ class Square:
         """
         print_list = []
 
-        if self.size == 0:
+        if self.__size == 0:
             print_list.append("\n")
         else:
-            if self.position[1] > 0:
+            if self.__position[1] > 0:
                 # Print blank line before
-                print_list.append("" * self.position[1])
+                print_list.append("" * self.__position[1])
 
-            for i in range(self.size):
+            for i in range(self.__size):
                 # Insert space
-                print_list.append(" " * self.position[0] + "#" * self.size)
+                print_list.append(" " * self.__position[0] + "#" * self.__size)
 
         return "\n".join(print_list)
