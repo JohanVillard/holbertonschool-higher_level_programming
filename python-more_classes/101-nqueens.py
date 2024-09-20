@@ -139,7 +139,7 @@ class Board:
 if __name__ == "__main__":
     # Check if the numbers of args is good
     if len(sys.argv) != 2:
-        print("Usage: nqueen N")
+        print("Usage: nqueens N")
         sys.exit(1)
 
     # Cast argv[1] into integer
