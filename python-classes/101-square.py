@@ -144,4 +144,4 @@ class Square:
                 # Insert space
                 print_list.append(" " * self.__position[0] + "#" * self.__size)
 
-        return "\n".join(print_list)
+        return str("\n".join(print_list))
