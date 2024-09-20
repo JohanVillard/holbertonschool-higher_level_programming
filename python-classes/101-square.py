@@ -137,9 +137,9 @@ class Square:
         if self.__size == 0:
             return "\n"
         else:
+            # Print blank line before
             if self.__position[1] > 0:
-                # Print blank line before
-                print_list.append("" * self.__position[1])
+                print("\n" * (self.__position[1] - 1))
 
             for i in range(self.__size):
                 # Insert space
