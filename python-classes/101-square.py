@@ -101,21 +101,20 @@ class Square:
         Returns:
             None
         """
-        if self.size == 0:
-            print()
-        else:
-            if self.__position[1] > 0:
-                # Print blank line before
-                for i in range(self.i__position[1]):
-                    print()
+        print_list = []
 
-            for i in range(self.size):
+        if self.__size == 0:
+            return "\n"
+        else:
+            # Print blank line before
+            if self.__position[1] > 0:
+                print("\n" * (self.__position[1] - 1))
+
+            for i in range(self.__size):
                 # Insert space
-                for k in range(self.__position[0]):
-                    print(" ", end="")
-                # Print square
-                for j in range(self.__size):
-                    print("#", end="")
+                print_list.append(" " * self.__position[0] + "#" * self.__size)
+
+        print("\n".join(print_list))
 
     def __str__(self):
         """
