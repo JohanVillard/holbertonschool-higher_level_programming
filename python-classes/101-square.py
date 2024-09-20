@@ -116,7 +116,6 @@ class Square:
                 # Print square
                 for j in range(self.size):
                     print("#", end="")
-                print()
 
     def __str__(self):
         """
@@ -133,22 +132,17 @@ class Square:
             str: The string representation of the square,
             including any blank lines and spaces for the position.
         """
+        print_list = []
+
         if self.size == 0:
-            print()
+            print_list.append("\n")
         else:
             if self.position[1] > 0:
                 # Print blank line before
-                for i in range(self.position[1]):
-                    print()
+                print_list.append("" * self.position[1])
 
             for i in range(self.size):
                 # Insert space
-                for k in range(self.position[0]):
-                    print(" ", end="")
-                # Print square
-                for j in range(self.size):
-                    print("#", end="")
-                if i < self.size - 1:
-                    print()
+                print_list.append(" " * self.position[0] + "#" * self.size)
 
-        return ""
+        return "\n".join(print_list)

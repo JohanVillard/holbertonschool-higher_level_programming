@@ -1,47 +1,31 @@
 #!/usr/bin/python3
-import sys
 
-"""
-This module solves the N queens problems.
+# Put the queen_1 at 0, 0
+#   Safe ? queen_1 vs None
+#       True: Put the queen_2 at 1, 0
 
-Usage: nqueen N
-"""
+#           Safe ? queen_1 vs queen_2
+#           False: Move queen_2 at 1, 1
+#           Safe ? queen_1 vs queen_2
+#           False: Move queen_2 at 1, 2
+#           Safe ? queen_1 vs queen_2
+#               True: Put the queen_3 at 2, 0
 
+#               Safe ? queen_1 vs queen_3
+#               False: Move queen_3 at 3, 0
+#               Safe ? queen_1 vs queen_3
+#               False: Move queen_3 at 3, 1
+#               Safe ? queen_1 vs queen_3
+#               False: Move queen_3 at 3, 2
+#               Safe ? queen_1 vs queen_3
+#               False: Move queen_3 at 3, 3
+#               Safe ? queen_1 vs queen_3
+#               False: Move queen_3 at 3, 4
+#                   True: Put the queen_N at N, 0
+#               ---------------------------------
 
-class Queen:
-    """ """
+# current_solution[8]
 
-    def __int__(self, row=0, col=0, next=None, prev=Node):
-        """ """
-        self.row = row
-        self.col = col
-        self.next = next
-        self.prev = prev
+## col 0
+for row0 = 0 to N
 
-
-if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: nqueen N")
-        sys.exit(1)
-
-    # Cast argv[1] into integer
-    try:
-        N = int(sys.argv[1])
-    except ValueError:
-        print("N must be a number")
-        sys.exit(1)
-
-    if N < 4:
-        print("N must be at least 4")
-        sys.exit(1)
-
-    # Create N queen(s)
-    queen_ + 1 = Queen(row, col)
-
-# root(P): Return the partial candidate at the root of the search tree
-
-# reject(P, c): Return true only if the partial candidate c is not worth completing
-
-# accept(P, c) return true if c is a solution of P, and false otherwise.
-
-# first(P, c): 
