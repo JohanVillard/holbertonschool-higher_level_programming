@@ -133,7 +133,7 @@ class Square:
         print_list = []
 
         if self.__size == 0:
-            return
+            print_list = ""
         else:
             # Print blank line before
             if self.__position[1] > 0:
