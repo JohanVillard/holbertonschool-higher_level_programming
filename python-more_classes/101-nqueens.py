@@ -70,7 +70,8 @@ class Board:
             # Check if the queen is on the same diagonal
             # A diagonal attack happens when the absolute difference in rows
             # equals the absolute difference in columns.
-            if abs(test_row - row) == abs(test_col - self.current_solution[row]):
+            if abs(test_row - row) == abs(test_col -
+                                          self.current_solution[row]):
                 return False
 
         # If no conflicts were found, the queen is safe
