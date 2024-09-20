@@ -13,3 +13,13 @@ print("--")
 
 my_square = Square(5, (4, 3))
 print(my_square)
+
+print("--")
+
+my_square = Square(5, (0, 3))
+print(my_square)
+
+print("--")
+
+my_square = Square(0, (3, 3))
+print(my_square)
