@@ -33,6 +33,11 @@ Traceback (most recent call last):
 	...
 TypeError: isbool must be an integer
 
+>>> bg.integer_validator("distance", 3.5)
+Traceback (most recent call last):
+	...
+TypeError: distance must be an integer
+
 # Test to call area method
 >>> bg.area()
 Traceback (most recent call last):
