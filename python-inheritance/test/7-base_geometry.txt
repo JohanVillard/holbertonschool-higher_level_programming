@@ -1,0 +1,9 @@
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+# value is not an integer
+>>> bg = BaseGeometry()
+
+>>> bg.integer_validator("not_an_int", "trololo")
+Traceback (most recent call last):
+	...
+TypeError: not_an_int must be an integer
