@@ -56,3 +56,13 @@ True
 >>> print(my_list)
 [-3, 4, -32, 1, 87]
 
+# Test with one element
+>>> my_list = MyList()
+>>> my_list.append(1)
+>>> print(my_list)
+[1]
+>>> my_list.print_sorted()
+[1]
+>>> print(my_list)
+[1]
+
