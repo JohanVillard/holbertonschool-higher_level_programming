@@ -17,3 +17,13 @@ True
 # The original list is not modified
 >>> print(my_list)
 [5, 4, 3, 2, 1]
+
+# Test append
+>>> my_list = MyList()
+>>> my_list.append(5)
+>>> my_list.append(1)
+>>> my_list.append(3)
+>>> my_list.print_sorted()
+[1, 3, 5]
+>>> print(my_list)
+[5, 1, 3]
