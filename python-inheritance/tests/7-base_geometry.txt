@@ -22,3 +22,10 @@ ValueError: iszero must be greater than 0
 Traceback (most recent call last):
 	...
 ValueError: isnegative must be greater than 0
+
+# Test to call area method
+>>> bg.area()
+Traceback (most recent call last):
+	...
+Exception: area() is not implemented
+
