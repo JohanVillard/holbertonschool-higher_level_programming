@@ -41,3 +41,18 @@ True
 [1, 1, 1, 1, 1]
 >>> print(my_list)
 [1, 1, 1, 1, 1]
+
+# Test with negative number
+>>> my_list = MyList()
+>>> my_list.append(-3)
+>>> my_list.append(4)
+>>> my_list.append(-32)
+>>> my_list.append(1)
+>>> my_list.append(87)
+>>> print(my_list)
+[-3, 4, -32, 1, 87]
+>>> my_list.print_sorted()
+[-32, -3, 1, 4, 87]
+>>> print(my_list)
+[-3, 4, -32, 1, 87]
+
