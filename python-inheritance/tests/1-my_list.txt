@@ -65,4 +65,9 @@ True
 [1]
 >>> print(my_list)
 [1]
+ 
+# Test with an empty list sorted
+>>> empty_list = MyList()
+>>> empty_list.print_sorted()
+[]
 
