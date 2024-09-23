@@ -45,23 +45,24 @@ class Rectangle(BaseGeometry):
 
     def __init__(self, width, height):
         """
-         Initialize a new Rectangle instance with width and height.
+        Initialize a new Rectangle instance with width and height.
 
-         This constructor validates that width and height are positive integers
-         using the 'integer_validator' method inherited from BaseGeometry.
+        The constructor validates that the width and height are positive
+        integers using the 'integer_validator' method inherited from
+        BaseGeometry.
 
         Parameters:
-             width (int): The width of the rectangle,
-                          must be a positive integer.
-             height (int): The height of the rectangle,
-                           must be a positive integer.
+            width (int): The width of the rectangle, must be a positive
+                         integer.
+            height (int): The height of the rectangle, must be a positive
+                          integer.
 
         Raises:
             TypeError: If either width or height is not an integer.
             ValueError: If either width or height is less than or equal to 0.
         """
         super().integer_validator("width", width)
-        Rectangle.__width = width
+        self.__width = width
 
         super().integer_validator("height", height)
-        Rectangle.__height = height
+        self.__height = height
