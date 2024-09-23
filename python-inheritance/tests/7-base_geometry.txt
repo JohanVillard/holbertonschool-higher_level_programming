@@ -6,7 +6,19 @@
 >>> bg.integer_validator("my_int", 12)
 
 # value is a string
->>> bg.integer_validator("not_an_int", "trololo")
+>>> bg.integer_validator("isstring", "trololo")
 Traceback (most recent call last):
 	...
-TypeError: not_an_int must be an integer
+TypeError: isstring must be an integer
+
+# value is  0
+>>> bg.integer_validator("iszero", 0)
+Traceback (most recent call last):
+	...
+ValueError: iszero must be greater than 0
+
+# value is a negative
+>>> bg.integer_validator("isnegative", -15)
+Traceback (most recent call last):
+	...
+ValueError: isnegative must be greater than 0
