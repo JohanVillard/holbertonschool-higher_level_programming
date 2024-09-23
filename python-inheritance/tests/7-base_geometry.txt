@@ -2,6 +2,10 @@
 
 >>> bg = BaseGeometry()
 
+# Check the type of instance
+>>> print(isinstance(bg, BaseGeometry))
+True
+
 # value is an integer
 >>> bg.integer_validator("my_int", 12)
 
@@ -28,4 +32,7 @@ ValueError: isnegative must be greater than 0
 Traceback (most recent call last):
 	...
 Exception: area() is not implemented
+
+# Test name is an empty string
+>>> bg.integer_validator("", 45)
 
