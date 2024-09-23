@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """This module defines a 'Shapes' class and its sub-class."""
 
-from abc import ABC, abstractmethod
 import math
+from abc import ABC, abstractmethod
 
 
 class Shape(ABC):
