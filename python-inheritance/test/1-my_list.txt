@@ -1,0 +1,19 @@
+>>> MyList = __import__('1-my_list').MyList
+
+# Create a in instance of MyList
+>>> my_list = MyList()
+>>> print(isinstance(my_list, MyList))
+True
+
+# Create a in instance of list
+>>> print(isinstance(my_list, list))
+True
+
+# Sort a list
+>>> my_list.extend([5, 4, 3, 2, 1])
+>>> my_list.print_sorted()
+[1, 2, 3, 4, 5]
+
+# The original list is not modified
+>>> print(my_list)
+[5, 4, 3, 2, 1]
