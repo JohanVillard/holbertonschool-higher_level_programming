@@ -28,7 +28,7 @@ class BaseGeometry:
 
         Raise:
             TypeError: If 'value' is not an integer or is a bool, raises a
-                       ValueError with the message '<name> must be an integer'.
+                       TypeError with the message '<name> must be an integer'.
             ValueError: If 'value' is negative or equal to 0, raises a
                         'ValueError' with the message '<name> must be greater
                         than 0'."
