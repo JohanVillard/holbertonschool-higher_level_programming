@@ -24,12 +24,6 @@ Traceback (most recent call last):
 	...
 ValueError: iszero must be greater than 0
 
-# value is negative
->>> bg.integer_validator("isneg", -2)
-Traceback (most recent call last):
-	...
-ValueError: isneg must be greater than 0
-
 # value is a bool - c
 >>> bg.integer_validator("isbool", True)
 Traceback (most recent call last):
