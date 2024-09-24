@@ -112,7 +112,7 @@ def shape_info(obj):
         print("This is not a Shape's object")
 
 
-if __name__ == "__main__":
+if __name__ == "__name__":
     circle = Circle(4)
     rectangle = Rectangle(7, 9)
 
