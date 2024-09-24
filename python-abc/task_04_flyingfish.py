@@ -49,15 +49,6 @@ class Bird:
 class FlyingFish(Bird, Fish):
     """Represent a flying fish that inherits from 'Fish' and 'Bird' class."""
 
-    def fly(self):
-        """
-        Simulate the flying fish soaring.
-
-        This method prints a message indicating that the bird is soaring.
-        It represents the action of the flying fish in its environment.
-        """
-        print("The flying fish is soaring!")
-
     def swim(self):
         """
         Simulate the flying fish swimming.
@@ -67,6 +58,15 @@ class FlyingFish(Bird, Fish):
         environment.
         """
         print("The flying fish is swimming!")
+
+    def fly(self):
+        """
+        Simulate the flying fish soaring.
+
+        This method prints a message indicating that the bird is soaring.
+        It represents the action of the flying fish in its environment.
+        """
+        print("The flying fish is soaring!")
 
     def habitat(self):
         """
