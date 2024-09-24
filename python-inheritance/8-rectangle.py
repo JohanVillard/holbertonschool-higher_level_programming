@@ -25,13 +25,6 @@ class BaseGeometry:
         Parameters:
             name (str):  The name of the value, we assume is always a string.
             value (int): The integer to validate.
-
-        Raise:
-            TypeError: If 'value' is not an integer or is a bool, raises a
-                       TypeError with the message '<name> must be an integer'.
-            ValueError: If 'value' is negative or equal to 0, raises a
-                        'ValueError' with the message '<name> must be greater
-                        than 0'."
         """
         if not isinstance(value, int) or isinstance(value, bool):
             raise TypeError(name + " must be an integer")
