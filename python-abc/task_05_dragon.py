@@ -25,7 +25,7 @@ class FlyMixin:
         This method prints a message indicating that the creature is flying.
         It represents the action of the creature in its environment.
         """
-        print("The creatures flies!")
+        print("The creature flies!")
 
 
 class Dragon(SwimMixin, FlyMixin):
