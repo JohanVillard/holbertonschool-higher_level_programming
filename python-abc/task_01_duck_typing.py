@@ -99,7 +99,8 @@ class Rectangle(Shape):
 
 
 def shape_info(obj):
-    """Print area and perimeter of all subclass of shape.
+    """
+    Print area and perimeter of all subclass of shape.
 
     Parameters:
         obj (Shape): An instance of a Shape subclass.
