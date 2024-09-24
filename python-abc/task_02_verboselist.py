@@ -43,8 +43,11 @@ class VerboseList(list):
             None: After remove, print the message
                   'Extended the list with [items].'
         """
-        print(f"Removed [{item}] from the list.")
-        super().remove(item)
+        if item in self:
+            print(f"Removed [{item}] from the list.")
+            super().remove(item)
+        else:
+            print(f"{item} do not exist in the list")
 
     def pop(self, position=None):
         """
