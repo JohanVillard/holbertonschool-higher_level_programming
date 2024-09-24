@@ -29,11 +29,18 @@ Traceback (most recent call last):
 	...
 TypeError: isbool must be an integer
 
-# value is None
+# value is None - c
 >>> bg.integer_validator("isnone", None)
 Traceback (most recent call last):
 	...
 TypeError: isnone must be an integer
+
+# value is inf
+>>> bg.integer_validator("isinf", float('inf'))
+Traceback (most recent call last):
+	...
+TypeError: isinf must be an integer
+
 
 ## name tests:
 --------------
