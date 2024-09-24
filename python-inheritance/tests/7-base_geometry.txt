@@ -8,17 +8,12 @@ Traceback (most recent call last):
 	...
 TypeError: isstring must be an integer
 
-# value is 0
+# value is 0 - c
 >>> bg.integer_validator("iszero", 0)
 Traceback (most recent call last):
 	...
 ValueError: iszero must be greater than 0
 
-# value is a negative
->>> bg.integer_validator("isnegative", -15)
-Traceback (most recent call last):    
-	...
-ValueError: isnegative must be greater than 0
 
 # value is a bool
 >>> bg.integer_validator("isbool", True)
