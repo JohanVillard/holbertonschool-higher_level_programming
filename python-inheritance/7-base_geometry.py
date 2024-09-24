@@ -3,10 +3,7 @@
 This module defines a class 'BaseGeometry'.
 
 The 'BaseGeometry' class itself serves as a base or abstract class for more
-specific geometric shapes, such as rectangles or circles. While it does not
-provide implementations of actual geometrical calculations (like calculating
-an area), it provides methods that can be extended or overridden by its
-subclasses to ensure certain behaviors and validations.
+specific geometric shapes, such as rectangles or circles.
 """
 
 
@@ -14,8 +11,7 @@ class BaseGeometry:
     """
     Represent base geometry.
 
-    This class serves as a blueprint for geometric shapes. It provides
-    methods that should be implemented or validated in its subclasses.
+    This class serves as a blueprint for geometric shapes.
 
     Methods:
         area(self):
@@ -29,9 +25,6 @@ class BaseGeometry:
     def area(self):
         """
         Raise an exception indicating the method is not implemented.
-
-        This method is meant to be overridden by subclasses to calculate
-        the area of a shape.
 
         Raise:
             Exception: Always raises an Exception with the message
@@ -48,14 +41,11 @@ class BaseGeometry:
             value (int): The integer to validate.
 
         Raise:
-            TypeError: If 'value' is not an integer, raises a ValueError with
-                       the message '<name> must be an integer'.
+            TypeError: If 'value' is not an integer, raises a ValueError.
             ValueError: If 'value' is negative or equal to 0, raises a
-                        'ValueError' with the message '<name> must be greater
-                        than 0'."
+                        'ValueError'."
         """
         if type(value) is not int:
             raise TypeError(name + " must be an integer")
-
         if value <= 0:
             raise ValueError(name + " must be greater than 0")
