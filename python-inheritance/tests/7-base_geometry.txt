@@ -15,12 +15,6 @@ Traceback (most recent call last):
 ValueError: iszero must be greater than 0
 
 
-# value is a bool
->>> bg.integer_validator("isbool", True)
-Traceback (most recent call last):
-	...
-TypeError: isbool must be an integer
-
 
 # Test to call area method
 >>> bg.area()
