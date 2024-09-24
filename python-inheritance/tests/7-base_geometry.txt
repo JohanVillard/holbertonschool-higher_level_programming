@@ -1,3 +1,9 @@
+7-base_geometry
+===============
+
+Using 'integer_validator'
+-------------------------
+
 >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
 >>> bg = BaseGeometry()
@@ -26,5 +32,5 @@ Traceback (most recent call last):
 	...
 Exception: area() is not implemented
 
-# Test name is an empty string
+# Test name is an empty string - c
 >>> bg.integer_validator("", 45)
