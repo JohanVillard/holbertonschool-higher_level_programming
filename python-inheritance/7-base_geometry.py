@@ -14,12 +14,11 @@ class BaseGeometry:
     This class serves as a blueprint for geometric shapes.
 
     Methods:
-        area(self):
-            Raises an exception indicating that the method is not yet
-            implemented and should be overridden by subclasses.
+        area(self): Raises an exception indicating that the method is not yet
+                    implemented and should be overridden by subclasses.
 
-        integer_validator(self, name, value):
-            Validates that a given value is a positive integer.
+        integer_validator(self, name, value): Validates that a given value is
+                                              a positive integer.
     """
 
     def area(self):
@@ -27,8 +26,7 @@ class BaseGeometry:
         Raise an exception indicating the method is not implemented.
 
         Raise:
-            Exception: Always raises an Exception with the message
-                       'area() is not implemented'.
+            Exception: Always raises an Exception.
         """
         raise Exception("area() is not implemented")
 
