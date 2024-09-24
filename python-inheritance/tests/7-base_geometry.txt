@@ -8,6 +8,7 @@ Using 'integer_validator'
 
 >>> bg = BaseGeometry()
 
+
 ## value tests:
 ---------------
 
@@ -35,8 +36,8 @@ Traceback (most recent call last):
 	...
 TypeError: isnone must be an integer
 
-# value is inf
->>> bg.integer_validator("isinf", float('inf'))
+# value is a list
+>>> bg.integer_validator("isinf", [1])
 Traceback (most recent call last):
 	...
 TypeError: isinf must be an integer
@@ -47,6 +48,7 @@ TypeError: isinf must be an integer
 
 # Test name is an empty string - c
 >>> bg.integer_validator("", 45)
+
 
 ## area test:
 -------------
