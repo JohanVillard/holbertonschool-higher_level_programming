@@ -10,13 +10,3 @@ try:
         print(f"Got {item}, total {counted_iter.get_count()} items iterated.")
 except StopIteration:
     print("No more items.")
-
-my_tuple = ("a", "b", "c", "d", "e")
-counted_iter = CountedIterator(my_tuple)
-
-try:
-    while True:
-        item = next(counted_iter)
-        print(f"Got {item}, total {counted_iter.get_count()} items iterated.")
-except StopIteration:
-    print("No more items.")
