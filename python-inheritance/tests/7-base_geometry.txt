@@ -42,15 +42,20 @@ Traceback (most recent call last):
 	...
 TypeError: islist must be an integer
 
+# value is a dict
+>>> bg.integer_validator("isdict", {1})
+Traceback (most recent call last):
+	...
+TypeError: isdict must be an integer
+
+
 
 ## name tests:
 --------------
 
-# Test name is an valid string
->>> bg.integer_validator("Hello", 45)
-
 # Test name is an empty string - c
 >>> bg.integer_validator("", 45)
+
 
 ## area test:
 -------------
