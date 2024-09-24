@@ -104,5 +104,8 @@ def shape_info(obj):
     Parameters:
         obj (Shape): An instance of a Shape subclass.
     """
-    print(f"Area: {obj.area()}")
-    print(f"Perimeter: {obj.perimeter()}")
+    try:
+        print(f"Area: {obj.area()}")
+        print(f"Perimeter: {obj.perimeter()}")
+    except AttributeError:
+        print("This is not a Shape's object")
