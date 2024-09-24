@@ -24,6 +24,12 @@ Traceback (most recent call last):
 	...
 ValueError: iszero must be greater than 0
 
+# value is negative
+>>> bg.integer_validator("isneg", -2)
+Traceback (most recent call last):
+	...
+ValueError: isneg must be greater than 0
+
 # value is a bool - c
 >>> bg.integer_validator("isbool", True)
 Traceback (most recent call last):
@@ -48,7 +54,7 @@ Traceback (most recent call last):
 	...
 TypeError: istuple must be an integer
 
-# value is a set
+# value is a set - c
 >>> bg.integer_validator("isset", {1})
 Traceback (most recent call last):
 	...
