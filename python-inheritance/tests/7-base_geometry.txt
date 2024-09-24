@@ -35,11 +35,8 @@ TypeError: isbool must be an integer
 # Test name is an empty string - c
 >>> bg.integer_validator("", 45)
 
-# Test name is an bool
->>> bg.integer_validator(dede, 45)
-Traceback (most recent call last):
-	...
-NameError: name 'dede' is not defined
+# Test name is None
+>>> bg.integer_validator(None, 45)
 
 ## area test:
 -------------
