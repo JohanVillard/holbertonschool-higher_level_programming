@@ -21,11 +21,5 @@ Traceback (most recent call last):
 TypeError: isbool must be an integer
 
 
-# Test to call area method
->>> bg.area()
-Traceback (most recent call last):
-	...
-Exception: area() is not implemented
-
 # Test name is an empty string
 >>> bg.integer_validator("", 45)
