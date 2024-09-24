@@ -43,7 +43,7 @@ class CountedIterator:
         Returns:
             object: The next item from the iterable.
         """
-        if self.count <= self.size:
+        if self.count < self.size:
             self.count += 1
             next_iter = next(self.iterator)
             return next_iter
