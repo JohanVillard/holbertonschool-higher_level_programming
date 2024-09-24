@@ -42,7 +42,7 @@ class Circle(Shape):
         Initialize an instance of Circle.
 
         Parameters:
-            radius (int): The radius of the circle.
+            radius (float): The radius of the circle.
         """
         self.radius = radius
 
@@ -66,7 +66,7 @@ class Circle(Shape):
 
 
 class Rectangle(Shape):
-    """Represent a rectancle, a subclass of Shape."""
+    """Represent a rectangle, a subclass of Shape."""
 
     def __init__(self, width, height):
         """
@@ -84,7 +84,7 @@ class Rectangle(Shape):
         Return the area of a rectangle.
 
         Returns:
-            int: The value of the area of a rectangle.
+            float: The value of the area of a rectangle.
         """
         return self.width * self.height
 
