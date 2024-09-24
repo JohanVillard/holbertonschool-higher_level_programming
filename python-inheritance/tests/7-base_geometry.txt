@@ -36,11 +36,14 @@ Traceback (most recent call last):
 	...
 TypeError: isnone must be an integer
 
-# value is a list
->>> bg.integer_validator("isinf", [1])
+# value is a list - c
+>>> bg.integer_validator("islist", [1])
 Traceback (most recent call last):
 	...
-TypeError: isinf must be an integer
+TypeError: islist must be an integer
+
+# value is positive integer
+>>> bg.integer_validator("isposint", 1)
 
 
 ## name tests:
@@ -48,7 +51,6 @@ TypeError: isinf must be an integer
 
 # Test name is an empty string - c
 >>> bg.integer_validator("", 45)
-
 
 ## area test:
 -------------
