@@ -64,6 +64,8 @@ class VerboseList(list):
         if position is None:
             print(f"Popped [{self[-1]}] from the list.")
             super().pop(-1)
+        elif position >= len(self) or position < 0:
+            print(f"The index [{position}] is out of bound.")
         else:
             print(f"Popped [{self[position]}] from the list.")
             super().pop(position)
