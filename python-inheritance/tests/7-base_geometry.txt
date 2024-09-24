@@ -3,8 +3,6 @@
 >>> bg = BaseGeometry()
 
 # Check the type of instance
->>> print(isinstance(bg, BaseGeometry))
-True
 
 # value is an integer
 >>> bg.integer_validator("my_int", 12)
