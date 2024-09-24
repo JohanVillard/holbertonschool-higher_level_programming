@@ -33,8 +33,7 @@ class BaseGeometry:
                         'ValueError' with the message '<name> must be greater
                         than 0'."
         """
-        if type(value) is not int:
-            raise TypeError("{} must be an integer".format(name))
-
-        if value <= 0:
-            raise ValueError("{} must be greater than 0".format(name))
+        if not int.__instancecheck__(value):
+            raise TypeError(f"{name} must be an integer")
+        if value.__le__(0):
+            raise ValueError(f"{name} must be greater than 0")
