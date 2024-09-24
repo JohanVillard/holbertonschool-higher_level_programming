@@ -54,7 +54,7 @@ class BaseGeometry:
                         'ValueError' with the message '<name> must be greater
                         than 0'."
         """
-        if not isinstance(value, int) or isinstance(value, bool):
+        if type(value) is not int:
             raise TypeError(name + " must be an integer")
 
         if value <= 0:
