@@ -76,4 +76,4 @@ class FlyingFish(Bird, Fish):
         and the sky. It is a simple description of the flying fish's natural
         environment.
         """
-        print("The fish lives both in water and the sky!")
+        print("The flying fish lives both in water and the sky!")
