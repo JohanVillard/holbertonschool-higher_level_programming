@@ -107,11 +107,3 @@ def shape_info(obj):
     """
     print(f"Area: {obj.area()}")
     print(f"Perimeter: {obj.perimeter()}")
-
-
-if __name__ == "__main__":
-    circle = Circle(4)
-    rectangle = Rectangle(7, 9)
-
-    shape_info(circle)
-    shape_info(rectangle)
