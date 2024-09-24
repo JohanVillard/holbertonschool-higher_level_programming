@@ -49,7 +49,7 @@ class VerboseList(list):
         else:
             print(f"{item} do not exist in the list")
 
-    def pop(self, position=None):
+    def pop(self, position=-1):
         """
         Remove the element at position to the list and print a message.
 
@@ -61,10 +61,7 @@ class VerboseList(list):
             None: After pop, print the message
                   'Extended the list with [items].'
         """
-        if position is None:
-            print(f"Popped [{self[-1]}] from the list.")
-            super().pop(-1)
-        elif position >= len(self) or position < 0:
+        if position >= len(self):
             print(f"The index [{position}] is out of bound.")
         else:
             print(f"Popped [{self[position]}] from the list.")
