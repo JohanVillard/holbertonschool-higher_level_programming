@@ -29,14 +29,17 @@ Traceback (most recent call last):
 	...
 TypeError: isbool must be an integer
 
+# value is None
+>>> bg.integer_validator("isnone", None)
+Traceback (most recent call last):
+	...
+TypeError: isnone must be an integer
+
 ## name tests:
 --------------
 
 # Test name is an empty string - c
 >>> bg.integer_validator("", 45)
-
-# Test name is None
->>> bg.integer_validator(None, 45)
 
 ## area test:
 -------------
@@ -46,4 +49,3 @@ TypeError: isbool must be an integer
 Traceback (most recent call last):
 	...
 Exception: area() is not implemented
-
