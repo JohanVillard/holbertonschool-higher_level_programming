@@ -98,19 +98,12 @@ class Rectangle(Shape):
         return 2 * (self.width + self.height)
 
 
-def shape_info(objs):
+def shape_info(obj):
     """
     Print area and perimeter of all subclass of shape.
 
     Parameters:
         obj (Shape): An instance of a Shape subclass.
     """
-    for shape in objs:
-        print(f"Area: {shape.area()}")
-        print(f"Perimeter: {shape.perimeter()}")
-
-
-if __name__ == "__main__":
-    shapes = [Circle(3), Rectangle(5, 4)]
-
-    shape_info(shapes)
+    print(f"Area: {obj.area()}")
+    print(f"Perimeter: {obj.perimeter()}")
