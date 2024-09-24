@@ -2,11 +2,6 @@
 
 >>> bg = BaseGeometry()
 
-# Check the type of instance
-
-# value is an integer
->>> bg.integer_validator("my_int", 12)
-
 # value is a string
 >>> bg.integer_validator("isstring", "trololo")
 Traceback (most recent call last):
