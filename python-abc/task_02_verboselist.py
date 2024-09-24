@@ -65,4 +65,6 @@ class VerboseList(list):
             print(f"The index [{position}] is out of bound.")
         else:
             print(f"Popped [{self[position]}] from the list.")
-            super().pop(position)
+
+            # Pop return the removed Value
+            return super().pop(position)
