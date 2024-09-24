@@ -43,16 +43,23 @@ Traceback (most recent call last):
 TypeError: islist must be an integer
 
 # value is a dict - c
->>> bg.integer_validator("isdict", {1})
+>>> bg.integer_validator("isdict", {"1": 1})
 Traceback (most recent call last):
 	...
 TypeError: isdict must be an integer
 
-# value is a tuple
+# value is a tuple - c
 >>> bg.integer_validator("istuple", (1,))
 Traceback (most recent call last):
 	...
 TypeError: istuple must be an integer
+
+# value is a set
+>>> bg.integer_validator("isset", {1})
+Traceback (most recent call last):
+	...
+TypeError: isset must be an integer
+
 
 
 ## name tests:
