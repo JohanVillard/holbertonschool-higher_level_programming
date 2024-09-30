@@ -38,16 +38,11 @@ if __name__ == "__main__":
     # Name a new file
     filename = "add_item.json"
 
-    # Add arg in a list
-    my_list = []
-
     # Pass the command argument
     argv = sys.argv[1:]
-    for arg in argv:
-        my_list.append(arg)
 
-    # Save list in a file
-    save_to_json_file(my_list, filename)
+    # Save argv list in a file
+    save_to_json_file(argv, filename)
 
     # Load from json file
     load_from_json_file(filename)
