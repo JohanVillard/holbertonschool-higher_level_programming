@@ -38,11 +38,9 @@ if __name__ == "__main__":
     # Name a new file
     filename = "add_item.json"
 
-    # Pass the command argument
-    argv = sys.argv[1:]
-
+    # Bound argv to exclude command
     # Save argv list in a file
-    save_to_json_file(argv, filename)
+    save_to_json_file(sys.argv[1:], filename)
 
     # Load from json file
     load_from_json_file(filename)
