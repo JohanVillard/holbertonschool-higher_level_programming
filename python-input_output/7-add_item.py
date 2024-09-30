@@ -48,5 +48,6 @@ if __name__ == "__main__":
         actual_objs = []
 
     # Bound argv to exclude command
+    # Add actual_objs to actual argv
     # Save argv list in a file
     save_to_json_file(actual_objs + sys.argv[1:], filename)
