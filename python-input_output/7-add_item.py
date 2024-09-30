@@ -38,9 +38,15 @@ if __name__ == "__main__":
     # Name a new file
     filename = "add_item.json"
 
-    # Bound argv to exclude command
-    # Save argv list in a file
-    save_to_json_file(sys.argv[1:], filename)
+    # Create a new list
+    new_list = []
 
     # Load from json file
-    load_from_json_file(filename)
+    try:
+        actual_objs = load_from_json_file(filename)
+    except FileNotFoundError:
+        actual_objs = []
+
+    # Bound argv to exclude command
+    # Save argv list in a file
+    save_to_json_file(actual_objs + sys.argv[1:], filename)
