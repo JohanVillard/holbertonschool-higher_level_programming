@@ -23,8 +23,9 @@ class CustomObject:
 
     def display(self):
         """Print out the instance's attribute of the CustomObject."""
-        for key, value in self.__dict__.items():
-            print(f"{key.title().replace("_", " ")}: {value}")
+        print(f"Name: {self.name}")
+        print(f"Age: {self.age}")
+        print(f"Is Student: {self.is_student}")
 
     def serialize(self, filename):
         """
