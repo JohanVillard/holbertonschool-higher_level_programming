@@ -48,4 +48,4 @@ class Student:
             json (dict): The dictionary where the new attributes are stored.
         """
         for key, value in json.items():
-            self.key = value
+            setattr(self, key, value)
