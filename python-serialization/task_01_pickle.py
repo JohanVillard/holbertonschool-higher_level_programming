@@ -1,6 +1,5 @@
 """This module serialize and deserialise custom Python object using pickle."""
 
-import os
 import pickle
 
 
@@ -56,12 +55,11 @@ class CustomObject:
             obj: The function return an loaded instance of the CustomObject.
                  If an error occurs, return None
         """
-        if not os.path.exists(filename):
-            return None
-
         try:
             with open(filename, "rb") as f:
                 return pickle.load(f)
         # The object is not corrupt or have a security violation
         except pickle.UnpicklingError:
+            return None
+        except FileNotFoundError:
             return None
