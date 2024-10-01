@@ -62,7 +62,11 @@ class CustomObject:
 
         try:
             with open(filename, "rb") as f:
-                return pickle.load(f)
+                new_obj = pickle.load(f)
+                if type(new_obj) is cls:
+                    return new_obj
+                else:
+                    return None
         except (FileNotFoundError, pickle.UnpicklingError):
             return None
         except Exception:
