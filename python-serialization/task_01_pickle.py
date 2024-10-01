@@ -48,4 +48,7 @@ class CustomObject:
             obj: The function return an loaded instance of the CustomObject.
         """
         with open(filename, "rb") as f:
-            return pickle.load(f)
+            try:
+                return pickle.load(f)
+            except TypeError:
+                return None
