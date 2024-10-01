@@ -36,6 +36,6 @@ class Student:
             for key, value in self.__dict__.items():
                 if key in attrs:
                     new_dict[key] = value
-            return new_dict
+            return dict(sorted(new_dict.items()))
         else:
-            return self.__dict__
+            return dict(sorted(self.__dict__.items()))
