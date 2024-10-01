@@ -11,12 +11,15 @@ def convert_csv_to_json(filename):
     Parameter:
         filename (str): The name of the CSV file to convert.
     """
+    data = []
     # Convert csv data into dictionary
     with open(filename, encoding="utf-8") as f_csv:
         # Check if file exists
         try:
             csv_reader = csv.DictReader(f_csv)
-            data = [row for row in csv_reader]
+
+            for rows in csv_reader:
+                data.append(rows)
         except TypeError:
             print("file not found")
             return False
@@ -26,7 +29,7 @@ def convert_csv_to_json(filename):
         # Check if conversion valid
         try:
             # Serialize the list of dictionaries into JSON
-            json.dump(data, f_json, indent=2)
+            json.dump(data, f_json, indent=4)
             return True
         except TypeError:
             print("file not found")
