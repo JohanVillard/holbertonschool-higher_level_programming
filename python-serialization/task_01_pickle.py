@@ -33,13 +33,13 @@ class CustomObject:
             filename (str): Name of the file which the data is stored.
 
         """
-        with open(filename, "wb") as f:
-            try:
+        try:
+            with open(filename, "wb") as f:
                 pickle.dump(self, f)
-            except TypeError:
-                return None
-            except pickle.PickleError:
-                return None
+        except TypeError:
+            return None
+        except pickle.PickleError:
+            return None
 
     @classmethod
     def deserialize(cls, filename):
@@ -52,10 +52,10 @@ class CustomObject:
         Returns:
             obj: The function return an loaded instance of the CustomObject.
         """
-        with open(filename, "rb") as f:
-            try:
+        try:
+            with open(filename, "rb") as f:
                 return pickle.load(f)
-            except TypeError:
-                return None
-            except pickle.PickleError:
-                return None
+        except TypeError:
+            return None
+        except pickle.PickleError:
+            return None
