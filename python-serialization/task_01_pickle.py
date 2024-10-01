@@ -40,7 +40,9 @@ class CustomObject:
                 pickle.dump(self, f)
         except TypeError:
             return None
-        except pickle.PickleError:
+        except pickle.PicklingError:
+            return None
+        except pickle.UnpicklingError:
             return None
 
     @classmethod
@@ -60,5 +62,7 @@ class CustomObject:
                 return pickle.load(f)
         except TypeError:
             return None
-        except pickle.PickleError:
+        except pickle.PicklingError:
+            return None
+        except pickle.UnpicklingError:
             return None
