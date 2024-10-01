@@ -59,5 +59,9 @@ class CustomObject:
         if not os.path.exists(filename):
             return None
 
-        with open(filename, "rb") as f:
-            return pickle.load(f)
+        try:
+            with open(filename, "rb") as f:
+                return pickle.load(f)
+        # The object is not corrupt or have a security violation
+        except pickle.UnpicklingError:
+            return None
