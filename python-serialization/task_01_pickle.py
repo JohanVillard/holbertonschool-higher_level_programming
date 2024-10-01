@@ -63,3 +63,5 @@ class CustomObject:
             return None
         except FileNotFoundError:
             return None
+        except TypeError:
+            return None
