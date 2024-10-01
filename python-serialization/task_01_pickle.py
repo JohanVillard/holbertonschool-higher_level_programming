@@ -32,6 +32,8 @@ class CustomObject:
         Parameter:
             filename (str): Name of the file which the data is stored.
 
+        Returns:
+            If an error occurs, return None
         """
         try:
             with open(filename, "wb") as f:
@@ -51,6 +53,7 @@ class CustomObject:
                             process.
         Returns:
             obj: The function return an loaded instance of the CustomObject.
+                 If an error occurs, return None
         """
         try:
             with open(filename, "rb") as f:
