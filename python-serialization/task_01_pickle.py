@@ -6,7 +6,7 @@ import pickle
 class CustomObject:
     """Represent a custom object."""
 
-    def __init__(self, name, age, is_student):
+    def __init__(self, name="", age=0, is_student=False):
         """
         Initialize a custom object.
 
