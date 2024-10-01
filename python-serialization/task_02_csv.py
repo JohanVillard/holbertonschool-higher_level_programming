@@ -29,7 +29,7 @@ def convert_csv_to_json(filename):
         # Check if conversion valid
         try:
             # Serialize the list of dictionaries into JSON
-            json.dump(data, f_json, indent=4)
+            f_json.write(json.dumps(data, indent=4))
             return True
         except TypeError:
             print("file not found")
