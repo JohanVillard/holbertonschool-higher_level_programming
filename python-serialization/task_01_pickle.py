@@ -38,11 +38,7 @@ class CustomObject:
         try:
             with open(filename, "wb") as f:
                 pickle.dump(self, f)
-        except TypeError:
-            return None
-        except pickle.PicklingError:
-            return None
-        except pickle.UnpicklingError:
+        except Exception:
             return None
 
     @classmethod
@@ -60,9 +56,5 @@ class CustomObject:
         try:
             with open(filename, "rb") as f:
                 return pickle.load(f)
-        except TypeError:
-            return None
-        except pickle.PicklingError:
-            return None
-        except pickle.UnpicklingError:
+        except Exception:
             return None
