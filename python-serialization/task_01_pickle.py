@@ -37,8 +37,12 @@ class CustomObject:
         Returns:
             If an error occurs, return None
         """
-        with open(filename, "wb") as f:
-            pickle.dump(self, f)
+        try:
+            with open(filename, "wb") as f:
+                pickle.dump(self, f)
+        # The object is not pickable
+        except pickle.PicklingError:
+            return None
 
     @classmethod
     def deserialize(cls, filename):
