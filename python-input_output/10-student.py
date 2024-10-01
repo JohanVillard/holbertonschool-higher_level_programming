@@ -31,11 +31,11 @@ class Student:
                   If attrs is empty, returns all attributes.
         """
         # Check if attrs is empty
-        if attrs:
+        if isinstance(attrs, list):
             new_dict = {}
             for key, value in self.__dict__.items():
                 if key in attrs:
                     new_dict[key] = value
-            return dict(sorted(new_dict.items()))
+            return new_dict
         else:
-            return dict(sorted(self.__dict__.items()))
+            return self.__dict__
