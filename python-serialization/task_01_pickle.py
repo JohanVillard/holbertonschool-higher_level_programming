@@ -39,9 +39,8 @@ class CustomObject:
         try:
             with open(filename, "wb") as f:
                 pickle.dump(self, f)
-        # The object is not pickable
-        except pickle.PicklingError:
-            return None
+        except Exception as e:
+            print("Error occured:", e)
 
     @classmethod
     def deserialize(cls, filename):
@@ -58,7 +57,7 @@ class CustomObject:
         try:
             with open(filename, "rb") as f:
                 return pickle.load(f)
-        # The object is not corrupt or have a security violation
+        # The object is corrupt or have a security violation
         except pickle.UnpicklingError:
             return None
         except FileNotFoundError:
