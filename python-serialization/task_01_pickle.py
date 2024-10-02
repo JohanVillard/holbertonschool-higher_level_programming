@@ -41,6 +41,7 @@ class CustomObject:
                 pickle.dump(self, f)
         except Exception as e:
             print("Error occured:", e)
+            return None
 
     @classmethod
     def deserialize(cls, filename):
@@ -63,4 +64,7 @@ class CustomObject:
         except FileNotFoundError:
             return None
         except TypeError:
+            return None
+        except Exception as e:
+            print("Error occured:", e)
             return None
