@@ -32,17 +32,11 @@ def fetch_and_save_posts():
         # Convert all posts in json format
         r_json = r.json()
 
-        new_list = []
-
-        # Structure the data
-        for post in r_json:
-            new_list.append(
-                {
-                    "id": post["id"],
-                    "title": post["title"],
-                    "body": post["body"]
-                 }
-            )
+        # Structure the data with list comprehension
+        new_list = [
+            {"id": post["id"], "title": post["title"], "body": post["body"]}
+            for post in r_json
+        ]
 
         # Write data into CSV file
         with open("posts.csv", "w", newline="") as csv_f:
@@ -55,5 +49,5 @@ def fetch_and_save_posts():
             # Write the header in the file corresponding to field_names string
             writer.writeheader()
 
-            # Write row correspondind to field_name string
+            # Write row corresponding to field_name string
             writer.writerows(new_list)
