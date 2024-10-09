@@ -162,8 +162,10 @@ def admin_only():
     return "Admin Access: Granted"
 
 
+# jwt error handlers
+
 @jwt.unauthorized_loader
-def unauthorized_callback(callback):
+def handle_unauthorized_error(err):
     """
     Handle error for the request without token or invalid token.
 
@@ -216,6 +218,17 @@ def handle_needs_fresh_token_error(err):
         tuple: A JSON response with an error message and a 401 status code.
     """
     return jsonify({"error": "Fresh token required"}), 401
+
+@jwt.revoked_token_loader
+def handle_revoked_token_error(err):
+    """Handle revoke JWT token errors."""
+    return jsonify({"error": "Token has been revoked"}), 401
+
+# Custom Error Handlers for JWT errors
+@app.errorhandler(401)
+def unauthorized_error(err):
+    """Handle all unauthorized errors with a 401 response."""
+    return jsonify({"error": "Unauthorized access"}), 401
 
 
 if __name__ == "__main__":
