@@ -58,10 +58,8 @@ def verify_password(username, password):
     """
     user = users.get(username)
     if username in users and check_password_hash(user["password"], password):
-        print("Password verified")
         return username
     else:
-        print("Bad login or bad password")
         return None
 
 
