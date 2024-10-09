@@ -14,7 +14,6 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
 
         do_GET method is called when the server receives a request HTTP GET.
         """
-
         if self.path == "/":
             # Send a response to the client (200 = OK)
             self.send_response(200)
@@ -24,7 +23,7 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
             self.end_headers()
 
             # Send the text to the client.
-            self.wfile.write(b"Hello, this is simple API!")
+            self.wfile.write(b"Hello, this is a simple API!")
 
         # Case : /data is included in the URL
         elif self.path == "/data":
