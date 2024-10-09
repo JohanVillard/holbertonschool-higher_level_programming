@@ -18,9 +18,12 @@ def fetch_and_print_posts():
         # Convert all posts in json format
         r_json = r.json()
 
-        # Itere in each post and print the value of title key
+        # Iterate in each post and print the value of title key
         for post in r_json:
             print(f"{post['title']}")
+
+    else:
+        print("Failed to fetch posts. Status Code: {r.status_code}")
 
 
 def fetch_and_save_posts():
@@ -51,3 +54,6 @@ def fetch_and_save_posts():
 
             # Write row corresponding to field_name string
             writer.writerows(new_list)
+
+    else:
+        print("Failed to fetch posts. Status Code: {r.status_code}")
