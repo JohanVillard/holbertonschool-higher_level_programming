@@ -4,6 +4,9 @@
 from http.server import HTTPServer, BaseHTTPRequestHandler
 import json
 
+# Define a dict
+dataset = {"name": "John", "age": "30", "city": "New York"}
+
 
 class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
     """Represent a request handler."""
@@ -19,7 +22,7 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
             self.send_response(200)
 
             # All response's headers are send. The method finalize the headers.
-            # The response 's body is ready to be written.
+            # The response's body is ready to be written.
             self.end_headers()
 
             # Send the text to the client.
@@ -27,9 +30,6 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
 
         # Case : /data is included in the URL
         elif self.path == "/data":
-            # Define a dict
-            dataset = {"name": "John", "age": "30", "city": "New York"}
-
             # Conversion dict to json
             json_dataset = json.dumps(dataset)
 
@@ -46,22 +46,20 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
             self.wfile.write(json_dataset.encode(encoding="utf-8"))
 
         elif self.path == "/info":
-            mark = {
+            info = {
                 "version": "1.0",
                 "description": "A simple API built with http.server",
             }
-
-            json_mark = json.dumps(mark)
-
+            json_info = json.dumps(info)
             self.send_response(200)
+            self.send_header("content-Type", "application/json")
             self.end_headers()
-            self.wfile.write(json_mark.encode(encoding="utf-8"))
+            self.wfile.write(json_info.encode(encoding="utf-8"))
 
+        # No path corresponds
         else:
-            # No path corresponds
             self.send_response(404)
             self.end_headers()
-
             self.wfile.write(b"Endpoint not found")
 
 
