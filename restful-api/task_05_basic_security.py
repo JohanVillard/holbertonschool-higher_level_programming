@@ -163,7 +163,6 @@ def admin_only():
 
 
 # jwt error handlers
-
 @jwt.unauthorized_loader
 def handle_unauthorized_error(err):
     """
@@ -193,7 +192,7 @@ def handle_invalid_token_error(err):
 
 
 @jwt.expired_token_loader
-def handle_expired_token_error(err):
+def handle_expired_token_error(jwt_header, jwt_payload):
     """
     Handle expired JWT token errors.
 
@@ -207,7 +206,7 @@ def handle_expired_token_error(err):
 
 
 @jwt.needs_fresh_token_loader
-def handle_needs_fresh_token_error(err):
+def handle_needs_fresh_token_error(jwt_header, jwt_payload):
     """
     Handle errors indicating that a fresh JWT token is required.
 
@@ -221,16 +220,9 @@ def handle_needs_fresh_token_error(err):
 
 
 @jwt.revoked_token_loader
-def handle_revoked_token_error(err):
+def handle_revoked_token_error(jwt_header, jwt_payload):
     """Handle revoke JWT token errors."""
     return jsonify({"error": "Token has been revoked"}), 401
-
-
-# Custom Error Handlers for JWT errors
-@app.errorhandler(401)
-def unauthorized_error(err):
-    """Handle all unauthorized errors with a 401 response."""
-    return jsonify({"error": "Unauthorized access"}), 401
 
 
 if __name__ == "__main__":
