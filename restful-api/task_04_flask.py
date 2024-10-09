@@ -9,12 +9,8 @@ app.json.sort_keys = False
 app.config["JSONIFY_PRETTYPRINT_REGULAR"] = True
 
 users = {
-    "jane": {
-        "username": "jane", "name": "Jane", "age": 28, "city": "Los Angeles"
-        },
-    "john": {
-        "username": "john", "name": "John", "age": 30, "city": "New York"
-        },
+    "jane": {"username": "jane", "name": "Jane", "age": 28, "city": "Los Angeles"},
+    "john": {"username": "john", "name": "John", "age": 30, "city": "New York"},
 }
 
 
@@ -55,10 +51,10 @@ def user_info(username):
 
     # User does not exist
     else:
-        return jsonify({"error": "User not found"})
+        return jsonify({"error": "User not found"}), 404
 
 
-@app.route("/add_user", methods=["GET", "POST"])
+@app.route("/add_user", methods=["POST"])
 def add_user():
     """Add an user in th user's dict."""
     # Parse the incoming json
@@ -74,12 +70,10 @@ def add_user():
         city = rq.get("city")
 
         # Add the new user to the user's dict
-        users[username] = {
-            "username": username, "name": name, "age": age, "city": city
-            }
+        users[username] = {"username": username, "name": name, "age": age, "city": city}
 
         # Return a confirmation message
-        return jsonify({"message": "User added", "user": users[username]})
+        return jsonify({"message": "User added", "user": users[username]}), 201
 
     else:
         # No user specified

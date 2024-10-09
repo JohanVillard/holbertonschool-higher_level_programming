@@ -64,7 +64,8 @@ class MyHandler(http.server.BaseHTTPRequestHandler):
             self.wfile.write(b"Endpoint not found")
 
 
-# Create an HTTP server
-with socketserver.TCPServer(("", 8000), MyHandler) as httpd:
-    # The server is launched indefinitely
-    httpd.serve_forever()
+if __name__ == "__main__":
+    # Create an HTTP server
+    with socketserver.TCPServer(("", 8000), MyHandler) as httpd:
+        # The server is launched indefinitely
+        httpd.serve_forever()
