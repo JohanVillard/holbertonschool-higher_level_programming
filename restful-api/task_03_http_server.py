@@ -1,14 +1,15 @@
 #!/usr/bin/python3
 """This modules defines a simple HTTP server."""
 
-from http.server import HTTPServer, BaseHTTPRequestHandler
+import http.server
+import socketserver
 import json
 
 # Define a dict
 dataset = {"name": "John", "age": "30", "city": "New York"}
 
 
-class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
+class MyHandler(http.server.BaseHTTPRequestHandler):
     """Represent a request handler."""
 
     def do_GET(self):
@@ -64,7 +65,6 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
 
 
 # Create an HTTP server
-httpd = HTTPServer(("", 8000), SimpleHTTPRequestHandler)
-
-# The server is launched indefinitely
-httpd.serve_forever()
+with socketserver.TCPServer(("", 8000), MyHandler) as httpd:
+    # The server is launched indefinitely
+    httpd.serve_forever()
