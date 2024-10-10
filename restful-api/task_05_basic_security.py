@@ -5,7 +5,7 @@ from functools import wraps
 
 from flask_httpauth import HTTPBasicAuth
 from flask import Flask, jsonify, request
-from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.security import check_password_hash
 from flask_jwt_extended import create_access_token
 from flask_jwt_extended import jwt_required
 from flask_jwt_extended import JWTManager
@@ -15,12 +15,12 @@ from flask_jwt_extended import get_jwt
 users = {
     "user1": {
         "username": "user1",
-        "password": generate_password_hash("hello"),
+        "password": "<hashed_password>",
         "role": "user",
     },
     "admin1": {
         "username": "admin1",
-        "password": generate_password_hash("bye"),
+        "password": "<hashed_password>",
         "role": "admin",
     },
 }
@@ -31,6 +31,8 @@ app = Flask(__name__)
 # Instance to add authentification based on HTTP
 auth = HTTPBasicAuth()
 
+# Create a JWT manager
+jwt = JWTManager(app)
 app.config[
     "JWT_SECRET_KEY"
 ] = """d5836d17f93e24c72c1034c5ecec92698f7c5609a181ee723c79a77b43ee2c2c
@@ -41,7 +43,6 @@ e912cfff3c9d4a5cd75299faf776a16b375d4b736c5e330c69d50a8eaafb2dc14310d99
 df1aabfe25e82af13f3f99fcb309697ed042778120489f95c392326254bb34758c39eb2
 0f7db4e2cceaccb6be96198a0d388d039b6a7786a6fc019a8d95f66e6e5ab388e6ee539
 6eb6756f860ad17fb900a2"""
-jwt = JWTManager(app)
 
 
 @auth.verify_password
@@ -67,7 +68,7 @@ def verify_password(username, password):
 @auth.login_required  # Access to indentified user only
 def basic_protected():
     """Give access to web page to identified user."""
-    return "Basic Auth: Access Granted"
+    return "Basic Auth: Access Granted", 200
 
 
 @app.route("/login", methods=["POST"])
@@ -83,9 +84,7 @@ def login():
     access_token = create_access_token(
         identity=username,
         # Add admin flag in JWT
-        additional_claims={
-            "is_administrator": users[username]["role"] == "admin"
-            },
+        additional_claims={"is_administrator": users[username]["role"] == "admin"},
     )
     return jsonify(access_token=access_token), 200
 
@@ -157,7 +156,7 @@ def admin_required():
 @admin_required()  # Protect this route with admin_required decorator
 def admin_only():
     """Access to admin only."""
-    return "Admin Access: Granted"
+    return "Admin Access: Granted", 200
 
 
 # jwt error handlers
@@ -172,7 +171,7 @@ def handle_unauthorized_error(err):
     Return:
         tuple: A response JSON with an error message et the status code 401.
     """
-    return jsonify({"msg": "Missing or invalid token"}), 401
+    return jsonify({"error": "Missing or invalid token"}), 401
 
 
 @jwt.invalid_token_loader
@@ -224,4 +223,4 @@ def handle_revoked_token_error(jwt_header, jwt_payload):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
