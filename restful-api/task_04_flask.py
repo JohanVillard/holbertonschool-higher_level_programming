@@ -5,17 +5,8 @@ from flask import Flask, jsonify, request
 
 # Instantiate a Flask web server
 app = Flask(__name__)
-app.json.sort_keys = False
-app.config["JSONIFY_PRETTYPRINT_REGULAR"] = True
 
-users = {
-    "jane": {
-        "username": "jane", "name": "Jane", "age": 28, "city": "Los Angeles"
-        },
-    "john": {
-        "username": "john", "name": "John", "age": 30, "city": "New York"
-        },
-}
+users = {}
 
 
 @app.route("/")
@@ -74,9 +65,7 @@ def add_user():
         city = rq.get("city")
 
         # Add the new user to the user's dict
-        users[username] = {
-            "username": username, "name": name, "age": age, "city": city
-            }
+        users[username] = {"username": username, "name": name, "age": age, "city": city}
 
         # Return a confirmation message
         return jsonify({"message": "User added", "user": users[username]}), 201

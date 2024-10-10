@@ -14,7 +14,7 @@ def fetch_and_print_posts():
     print(f"Status Code: {r.status_code}")
 
     # Check if code is ok (200)
-    if r.ok:
+    if r.status_code == 200:
         # Convert all posts in json format
         r_json = r.json()
 
@@ -31,7 +31,7 @@ def fetch_and_save_posts():
     # Stores all posts
     r = requests.get("https://jsonplaceholder.typicode.com/posts")
 
-    if r.ok:
+    if r.status_code == 200:
         # Convert all posts in json format
         r_json = r.json()
 
