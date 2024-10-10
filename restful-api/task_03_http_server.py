@@ -48,7 +48,7 @@ class MyHandler(http.server.BaseHTTPRequestHandler):
             self.send_response(200)
             self.send_header("Content-Type", "text/plain")
             self.end_headers()
-            self.wfile.write("OK")
+            self.wfile.write(b"OK")
 
         elif self.path == "/info":
             self.send_response(200)
