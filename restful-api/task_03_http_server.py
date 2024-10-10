@@ -22,6 +22,7 @@ class MyHandler(http.server.BaseHTTPRequestHandler):
             # Send a response to the client (200 = OK)
             self.send_response(200)
 
+            # Add Content-Type to indicate that the body is text type
             self.send_header("Content-Type", "text/plain")
 
             # All response's headers are send. The method finalize the headers.
@@ -35,28 +36,31 @@ class MyHandler(http.server.BaseHTTPRequestHandler):
         elif self.path == "/data":
             # Conversion dict to json
             json_dataset = json.dumps(dataset)
-
-            # Server's response is OK
             self.send_response(200)
 
             # Add Content-Type to indicate that the body is JSON type
             self.send_header("Content-Type", "application/json")
-
-            # Indicate that the header is finished
             self.end_headers()
 
             # Send file to the client. (encodage en bytes)
             self.wfile.write(json_dataset.encode(encoding="utf-8"))
 
+        elif self.path == "/status":
+            self.send_response(200)
+            self.send_header("Content-Type", "text/plain")
+            self.end_headers()
+            self.send_message("OK")
+
         elif self.path == "/info":
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.end_headers()
+
             info = {
                 "version": "1.0",
                 "description": "A simple API built with http.server",
             }
             json_info = json.dumps(info)
-            self.send_response(200)
-            self.send_header("Content-Type", "application/json")
-            self.end_headers()
             self.wfile.write(json_info.encode(encoding="utf-8"))
 
         # No path corresponds
