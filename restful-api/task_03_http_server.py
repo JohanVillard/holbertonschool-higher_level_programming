@@ -5,9 +5,6 @@ import http.server
 import socketserver
 import json
 
-# Define a dict
-dataset = {"name": "John", "age": 30, "city": "New York"}
-
 
 class MyHandler(http.server.BaseHTTPRequestHandler):
     """Represent a request handler."""
@@ -34,13 +31,15 @@ class MyHandler(http.server.BaseHTTPRequestHandler):
 
         # Case : /data is included in the URL
         elif self.path == "/data":
-            # Conversion dict to json
-            json_dataset = json.dumps(dataset)
             self.send_response(200)
 
             # Add Content-Type to indicate that the body is JSON type
             self.send_header("Content-Type", "application/json")
             self.end_headers()
+
+            # Define a dict and convert it to json
+            dataset = {"name": "John", "age": 30, "city": "New York"}
+            json_dataset = json.dumps(dataset)
 
             # Send file to the client. (encodage en bytes)
             self.wfile.write(json_dataset.encode(encoding="utf-8"))
