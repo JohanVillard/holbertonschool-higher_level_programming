@@ -6,7 +6,7 @@ import socketserver
 import json
 
 # Define a dict
-dataset = {"name": "John", "age": "30", "city": "New York"}
+dataset = {"name": "John", "age": 30, "city": "New York"}
 
 
 class MyHandler(http.server.BaseHTTPRequestHandler):
@@ -21,6 +21,8 @@ class MyHandler(http.server.BaseHTTPRequestHandler):
         if self.path == "/":
             # Send a response to the client (200 = OK)
             self.send_response(200)
+
+            self.send_header("Content-Type", "text/plain")
 
             # All response's headers are send. The method finalize the headers.
             # The response's body is ready to be written.
@@ -38,7 +40,7 @@ class MyHandler(http.server.BaseHTTPRequestHandler):
             self.send_response(200)
 
             # Add Content-Type to indicate that the body is JSON type
-            self.send_header("content-Type", "application/json")
+            self.send_header("Content-Type", "application/json")
 
             # Indicate that the header is finished
             self.end_headers()
@@ -53,13 +55,14 @@ class MyHandler(http.server.BaseHTTPRequestHandler):
             }
             json_info = json.dumps(info)
             self.send_response(200)
-            self.send_header("content-Type", "application/json")
+            self.send_header("Content-Type", "application/json")
             self.end_headers()
             self.wfile.write(json_info.encode(encoding="utf-8"))
 
         # No path corresponds
         else:
             self.send_response(404)
+            self.send_header("Content-Type", "text/plain")
             self.end_headers()
             self.wfile.write(b"Endpoint not found")
 
