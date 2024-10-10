@@ -42,7 +42,7 @@ class MyHandler(http.server.BaseHTTPRequestHandler):
             json_dataset = json.dumps(dataset)
 
             # Send file to the client. (encodage en bytes)
-            self.wfile.write(json_dataset.encode(encoding="utf-8"))
+            self.wfile.write(json_dataset.encode("utf-8"))
 
         elif self.path == "/status":
             self.send_response(200)
@@ -60,7 +60,7 @@ class MyHandler(http.server.BaseHTTPRequestHandler):
                 "description": "A simple API built with http.server",
             }
             json_info = json.dumps(info)
-            self.wfile.write(json_info.encode(encoding="utf-8"))
+            self.wfile.write(json_info.encode("utf-8"))
 
         # No path corresponds
         else:
