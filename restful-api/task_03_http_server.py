@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""This modules defines a simple HTTP server."""
+"""This module defines a simple HTTP server."""
 
 import http.server
 import socketserver
@@ -48,7 +48,7 @@ class MyHandler(http.server.BaseHTTPRequestHandler):
             self.send_response(200)
             self.send_header("Content-Type", "text/plain")
             self.end_headers()
-            self.send_message("OK")
+            self.wfile.write("OK")
 
         elif self.path == "/info":
             self.send_response(200)
