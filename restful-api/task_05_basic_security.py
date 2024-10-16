@@ -105,7 +105,7 @@ def admin_only():
     return jsonify({"Admin Access": "Granted"}), 200
 
 
-# jwt error handlers
+# -------------------------- jwt error handlers -------------------------- #
 @jwt.unauthorized_loader
 def handle_unauthorized_error(err):
     """
@@ -120,8 +120,14 @@ def handle_unauthorized_error(err):
     return jsonify({"error": "Missing or invalid token"}), 401
 
 
+@jwt.invalid_token_loader
+def handle_invalid_token_error(err):
+    """Handle error for invalid token."""
+    return jsonify({"error": "Invalid token"}), 401
+
+
 @jwt.expired_token_loader
-def handle_expired_token_error(jwt_header, jwt_payload):
+def handle_expired_token_error(err):
     """
     Handle expired JWT token errors.
 
@@ -135,7 +141,7 @@ def handle_expired_token_error(jwt_header, jwt_payload):
 
 
 @jwt.needs_fresh_token_loader
-def handle_needs_fresh_token_error(jwt_header, jwt_payload):
+def handle_needs_fresh_token_error(err):
     """
     Handle errors indicating that a fresh JWT token is required.
 
@@ -149,9 +155,15 @@ def handle_needs_fresh_token_error(jwt_header, jwt_payload):
 
 
 @jwt.revoked_token_loader
-def handle_revoked_token_error(jwt_header, jwt_payload):
+def handle_revoked_token_error(err):
     """Handle revoke JWT token errors."""
     return jsonify({"error": "Token has been revoked"}), 401
+
+
+@jwt.token_verification_failed_loader
+def handle_claims_check_error(err):
+    """Handle claims check fails."""
+    return jsonify({"error": "Claims check fails"}), 401
 
 
 if __name__ == "__main__":
