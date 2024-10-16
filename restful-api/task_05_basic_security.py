@@ -99,7 +99,7 @@ def admin_only():
 # -------------------------- auth error handlers ------------------------- #
 
 
-@auth.err_handler
+@auth.error_handler
 def handle_auth_error():
     """Handle basic authentification error."""
     return jsonify({"error": "Invalid credentials"}), 401
