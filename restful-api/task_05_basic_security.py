@@ -30,6 +30,9 @@ app = Flask(__name__)
 # Instance to add authentification based on HTTP
 auth = HTTPBasicAuth()
 
+# For Flask. Keep the client side secure
+app.config["SECRET_KEY"] = "Sur un malentendu, ca peut marcher!!!"
+# For token
 app.config["JWT_SECRET_KEY"] = "your_secret_key_here"
 
 # Create a JWT manager
@@ -56,13 +59,6 @@ def verify_password(username, password):
     return None
 
 
-@app.route("/basic-protected", methods=["GET"])
-@auth.login_required  # Access to indentified user only
-def basic_protected():
-    """Give access to web page to identified user."""
-    return "Basic Auth: Access Granted", 200
-
-
 @app.route("/login", methods=["POST"])
 def login():
     """Check user's password."""
@@ -74,8 +70,14 @@ def login():
         return jsonify({"msg": "Bad username or password"}), 401
 
     access_token = create_access_token(identity=username)
-
     return jsonify(access_token=access_token), 200
+
+
+@app.route("/basic-protected", methods=["GET"])
+@auth.login_required  # Access to indentified user only
+def basic_protected():
+    """Give access to web page to identified user."""
+    return "Basic Auth: Access Granted", 200
 
 
 @app.route("/jwt-protected", methods=["GET"])
@@ -92,7 +94,7 @@ def admin_only():
     username = get_jwt_identity()
     user = users.get(username)
     if not user.get("role") == "admin":
-        return jsonify({"error: Admin access required"}), 403
+        return {"error: Admin access required"}, 403
     return "Admin Access: Granted", 200
 
 
