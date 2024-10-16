@@ -30,16 +30,7 @@ app = Flask(__name__)
 # Instance to add authentification based on HTTP
 auth = HTTPBasicAuth()
 
-app.config[
-    "JWT_SECRET_KEY"
-] = """d5836d17f93e24c72c1034c5ecec92698f7c5609a181ee723c79a77b43ee2c2c
-06bb199c89d574e5209ba25e53416e2e12c1395e86c79426fb2ab2eeb1b0d8c156c48aa
-ca783bb9649e43cac9c3a80b7408b19713a14b8c12720be428636f994f39e953ab61a5e
-bfbd569a74f2a15b578ca95447c1bd3c36f19fafb1d154b1a7eed6edcc28cd56be6e005
-e912cfff3c9d4a5cd75299faf776a16b375d4b736c5e330c69d50a8eaafb2dc14310d99
-df1aabfe25e82af13f3f99fcb309697ed042778120489f95c392326254bb34758c39eb2
-0f7db4e2cceaccb6be96198a0d388d039b6a7786a6fc019a8d95f66e6e5ab388e6ee539
-6eb6756f860ad17fb900a2"""
+app.config["JWT_SECRET_KEY"] = "your_secret_key_here"
 
 # Create a JWT manager
 jwt = JWTManager(app)
@@ -106,6 +97,8 @@ def admin_only():
 
 
 # -------------------------- jwt error handlers -------------------------- #
+
+
 @jwt.unauthorized_loader
 def handle_unauthorized_error(err):
     """
