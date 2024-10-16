@@ -1,26 +1,22 @@
 #!/usr/bin/python3
 """This module defines security training."""
 
-from functools import wraps
-
 from flask_httpauth import HTTPBasicAuth
 from flask import Flask, jsonify, request
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_jwt_extended import create_access_token
-from flask_jwt_extended import jwt_required
+from flask_jwt_extended import jwt_required, get_jwt
 from flask_jwt_extended import JWTManager
-from flask_jwt_extended import verify_jwt_in_request
-from flask_jwt_extended import get_jwt
 
 users = {
     "user1": {
         "username": "user1",
-        "password": generate_password_hash("<hashed_password>"),
+        "password": generate_password_hash("hashed_password"),
         "role": "user",
     },
     "admin1": {
         "username": "admin1",
-        "password": generate_password_hash("<hashed_password>"),
+        "password": generate_password_hash("hashed_password"),
         "role": "admin",
     },
 }
@@ -78,14 +74,15 @@ def login():
     username = data.get("username")
     password = data.get("password")
 
+    user = users.get(username)
+
     if not verify_password(username, password):
         return jsonify({"msg": "Bad username or password"}), 401
 
     access_token = create_access_token(
-        identity=username,
-        # Add admin flag in JWT
-        additional_claims={"is_administrator": users[username]["role"] == "admin"},
+        identity=username, additional_claims={"role": user["role"]}
     )
+
     return jsonify(access_token=access_token), 200
 
 
@@ -96,66 +93,14 @@ def jwt_protected():
     return "JWT Auth: Access Granted", 200
 
 
-# Create a custom decorator
-def admin_required():
-    """
-    Is Decorator to restrict access to routes to administrators only.
-
-    Returns:
-        function: A decorator that wraps the original function,
-                  providing administrator access control.
-    """
-
-    def wrapper(fn):
-        """
-        Check condition to execute the original function.
-
-        This function is called in place of the original function when
-        the route is accessed. It verifies the JWT and checks if the user
-        is an administrator.
-
-        Parameters:
-            fn (function): The original function to be decorated.
-
-        Returns:
-            function: The decorated function if the user is an
-                      administrator; otherwise, a JSON response with
-                      an error message and a 403 status code.
-        """
-
-        @wraps(fn)
-        def decorator(*args, **kwargs):
-            """
-            Execute the original function if the user is an administrator.
-
-            Parameters:
-                *args: Positional arguments passed to the original function.
-                **kwargs: Keyword arguments passed to the original function.
-
-            Returns:
-                fn (func): The original function's response if the user is
-                           an administrator; otherwise, a JSON response
-                           with an error message and a 403 status code.
-            """
-            # Check if JWT token is valid
-            verify_jwt_in_request()
-            # Get datas in JWT
-            claims = get_jwt()
-            # Administrator check
-            if claims["is_administrator"]:
-                return fn(*args, **kwargs)
-            else:
-                return jsonify(msg="Admin only!"), 403
-
-        return decorator
-
-    return wrapper
-
-
 @app.route("/admin-only", methods=["GET"])
-@admin_required()  # Protect this route with admin_required decorator
+@jwt_required()
 def admin_only():
     """Access to admin only."""
+    claims = get_jwt()
+    print(claims)
+    if not claims["role"] == "admin":
+        return jsonify({"error": "Admin access required"}), 403
     return "Admin Access: Granted", 200
 
 
