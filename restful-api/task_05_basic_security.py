@@ -96,15 +96,6 @@ def admin_only():
     return jsonify({"Admin Access": "Granted"}), 200
 
 
-# -------------------------- auth error handlers ------------------------- #
-
-
-@auth.err_handler
-def handle_auth_error():
-    """Handle basic authentification error."""
-    return jsonify({"error": "Invalid credentials"})
-
-
 # -------------------------- jwt error handlers -------------------------- #
 
 
