@@ -55,7 +55,6 @@ def verify_password(username, password):
         user = users.get(username)
         if check_password_hash(user.get("password"), password):
             return username
-
     return None
 
 
@@ -68,11 +67,8 @@ def login():
 
     user = users.get(username)
 
-    if not user:
-        return jsonify({"error": "Invalid username or password"}), 401
-
-    if not check_password_hash(user["password"], password):
-        return jsonify({"error": "Invalid username or password"}), 401
+    if not verify_password(username, password):
+        return jsonify({"msg": "Bad username or password"}), 401
 
     access_token = create_access_token(
         identity={"username": username, "role": user["role"]}
@@ -99,7 +95,7 @@ def jwt_protected():
 def admin_only():
     """Access to admin only."""
     if get_jwt_identity()["role"] != "admin":
-        return {"error: Admin access required"}, 403
+        return {"error": "Admin access required"}, 403
     return "Admin Access: Granted", 200
 
 
