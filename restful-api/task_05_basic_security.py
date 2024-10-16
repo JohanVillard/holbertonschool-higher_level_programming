@@ -5,7 +5,7 @@ from functools import wraps
 
 from flask_httpauth import HTTPBasicAuth
 from flask import Flask, jsonify, request
-from werkzeug.security import check_password_hash
+from werkzeug.security import check_password_hash, generate_password_hash
 from flask_jwt_extended import create_access_token
 from flask_jwt_extended import jwt_required
 from flask_jwt_extended import JWTManager
@@ -15,12 +15,12 @@ from flask_jwt_extended import get_jwt
 users = {
     "user1": {
         "username": "user1",
-        "password": "<hashed_password>",
+        "password": generate_password_hash("<hashed_password>"),
         "role": "user",
     },
     "admin1": {
         "username": "admin1",
-        "password": "<hashed_password>",
+        "password": generate_password_hash("<hashed_password>"),
         "role": "admin",
     },
 }
@@ -166,7 +166,7 @@ def handle_unauthorized_error(err):
     Handle error for the request without token or invalid token.
 
     Parameters:
-        callback (str): The error message.
+        err (str): The error message.
 
     Return:
         tuple: A response JSON with an error message et the status code 401.
