@@ -4,9 +4,12 @@
 from flask_httpauth import HTTPBasicAuth
 from flask import Flask, jsonify, request
 from werkzeug.security import check_password_hash, generate_password_hash
-from flask_jwt_extended import create_access_token
-from flask_jwt_extended import jwt_required, get_jwt_identity
-from flask_jwt_extended import JWTManager
+from flask_jwt_extended import (
+    create_access_token,
+    jwt_required,
+    get_jwt_identity,
+    JWTManager,
+)
 
 users = {
     "user1": {
@@ -66,7 +69,7 @@ def verify_password(username, password):
 @auth.login_required  # Access to indentified user only
 def basic_protected():
     """Give access to web page to identified user."""
-    return "Basic Auth: Access Granted", 200
+    return jsonify({"Basic Auth": "Access Granted"}), 200
 
 
 @app.route("/login", methods=["POST"])
@@ -88,7 +91,7 @@ def login():
 @jwt_required()  # Protected by JWT
 def jwt_protected():
     """Access to this route with JWT only."""
-    return "JWT Auth: Access Granted", 200
+    return jsonify({"JWT Auth": "Access Granted"}), 200
 
 
 @app.route("/admin-only", methods=["GET"])
@@ -99,7 +102,7 @@ def admin_only():
     user = users.get(username)
     if not user.get("role") == "admin":
         return jsonify({"error": "Admin access required"}), 403
-    return "Admin Access: Granted", 200
+    return jsonify({"Admin Access": "Granted"}), 200
 
 
 # jwt error handlers
@@ -115,20 +118,6 @@ def handle_unauthorized_error(err):
         tuple: A response JSON with an error message et the status code 401.
     """
     return jsonify({"error": "Missing or invalid token"}), 401
-
-
-@jwt.invalid_token_loader
-def handle_invalid_token_error(err):
-    """
-    Handle invalid JWT token errors.
-
-    Parameters:
-        err (Exception): The error that occured.
-
-    Returns:
-        tuple: A JSON response with an error message and a 401 status code.
-    """
-    return jsonify({"error": "Invalid token"}), 401
 
 
 @jwt.expired_token_loader
