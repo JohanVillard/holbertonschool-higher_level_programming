@@ -66,10 +66,14 @@ def login():
     username = data.get("username")
     password = data.get("password")
 
+    user = users.get(username)
+
     if not verify_password(username, password):
         return jsonify({"msg": "Bad username or password"}), 401
 
-    access_token = create_access_token(identity=username)
+    access_token = create_access_token(
+        identity={"username": username, "role": user["role"]}
+    )
     return jsonify(access_token=access_token), 200
 
 
@@ -91,9 +95,7 @@ def jwt_protected():
 @jwt_required()
 def admin_only():
     """Access to admin only."""
-    username = get_jwt_identity()
-    user = users.get(username)
-    if not user.get("role") == "admin":
+    if get_jwt_identity()["role"] != "admin":
         return {"error: Admin access required"}, 403
     return "Admin Access: Granted", 200
 
