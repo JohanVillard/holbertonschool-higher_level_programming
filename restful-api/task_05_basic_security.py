@@ -60,7 +60,7 @@ def verify_password(username, password):
 @auth.login_required  # Access to indentified user only
 def basic_protected():
     """Give access to web page to identified user."""
-    return jsonify({"Basic Auth": "Access Granted"}), 200
+    return "Basic Auth: Access Granted", 200
 
 
 @app.route("/login", methods=["POST"])
@@ -82,7 +82,7 @@ def login():
 @jwt_required()  # Protected by JWT
 def jwt_protected():
     """Access to this route with JWT only."""
-    return jsonify({"JWT Auth": "Access Granted"}), 200
+    return "JWT Auth: Access Granted", 200
 
 
 @app.route("/admin-only", methods=["GET"])
@@ -92,8 +92,8 @@ def admin_only():
     username = get_jwt_identity()
     user = users.get(username)
     if not user.get("role") == "admin":
-        return jsonify({"error": "Admin access required"}), 403
-    return jsonify({"Admin Access": "Granted"}), 200
+        return jsonify({"error: Admin access required"}), 403
+    return "Admin Access: Granted", 200
 
 
 # -------------------------- auth error handlers ------------------------- #
