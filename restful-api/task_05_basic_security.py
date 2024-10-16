@@ -27,8 +27,6 @@ app = Flask(__name__)
 # Instance to add authentification based on HTTP
 auth = HTTPBasicAuth()
 
-# Create a JWT manager
-jwt = JWTManager(app)
 app.config[
     "JWT_SECRET_KEY"
 ] = """d5836d17f93e24c72c1034c5ecec92698f7c5609a181ee723c79a77b43ee2c2c
@@ -39,6 +37,9 @@ e912cfff3c9d4a5cd75299faf776a16b375d4b736c5e330c69d50a8eaafb2dc14310d99
 df1aabfe25e82af13f3f99fcb309697ed042778120489f95c392326254bb34758c39eb2
 0f7db4e2cceaccb6be96198a0d388d039b6a7786a6fc019a8d95f66e6e5ab388e6ee539
 6eb6756f860ad17fb900a2"""
+
+# Create a JWT manager
+jwt = JWTManager(app)
 
 
 @auth.verify_password
@@ -53,11 +54,12 @@ def verify_password(username, password):
     Returns:
         username (str): The name of the user.
     """
-    user = users.get(username)
-    if username in users and check_password_hash(user["password"], password):
-        return username
-    else:
-        return None
+    if username in users:
+        user = users.get(username)
+        if check_password_hash(user.get("password"), password):
+            return username
+
+    return None
 
 
 @app.route("/basic-protected", methods=["GET"])
