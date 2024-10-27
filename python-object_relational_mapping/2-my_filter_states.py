@@ -24,9 +24,10 @@ if __name__ == "__main__":
     cursor = connexion.cursor()
 
     # Execute a SQL query
-    sql = "SELECT * FROM states WHERE name = '{}' ORDER BY states.id ASC".format(
-        state_name_searched
-    )
+    sql = "SELECT * \
+            FROM states \
+            WHERE name = '{}' \
+            ORDER BY states.id ASC".format(state_name_searched)
     cursor.execute(sql)
 
     # All fetched at once

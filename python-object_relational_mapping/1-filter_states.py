@@ -26,7 +26,11 @@ if __name__ == "__main__":
     # Execute SQL query
     # Display city starting with a N
     cursor.execute(
-        "SELECT * FROM states WHERE states.name LIKE 'N%' ORDER BY states.id ASC"
+        "SELECT * \
+        FROM states \
+        WHERE states.name \
+        LIKE 'N%' \
+        ORDER BY states.id ASC"
     )
 
     # Fetch All-at-Once

@@ -29,7 +29,12 @@ if __name__ == "__main__":
     session = Session()
 
     # Build a query
-    cities_states = session.query(City, State).join(State).order_by(City.id.asc()).all()
+    cities_states = (
+        session.query(City, State)
+        .join(State)
+        .order_by(City.id.asc())
+        .all()
+        )
     for city, state in cities_states:
         print(f"{state.name}: ({city.id}) {city.name}")
 

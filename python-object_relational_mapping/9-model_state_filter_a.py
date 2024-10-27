@@ -29,7 +29,12 @@ if __name__ == "__main__":
     # Instance a session
     session = Session()
 
-    query = session.query(State).filter(State.name.like("%a%")).order_by(State.id).all()
+    query = (
+        session.query(State)
+        .filter(State.name.like("%a%"))
+        .order_by(State.id)
+        .all()
+    )
     if not query:
         print("Nothing")
     else:
