@@ -27,7 +27,7 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
 
     # Create an entry
-    louisiana = State(name="Lousiana")
+    louisiana = State(name="Louisiana")
 
     # Instance a session
     session = Session()

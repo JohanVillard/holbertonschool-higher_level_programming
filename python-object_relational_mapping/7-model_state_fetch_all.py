@@ -1,10 +1,11 @@
 #!/usr/bin/python3
-"""This module lists all `State`objects from `hbtn_0e_6_usa`."""
+"""This module lists all `State` objects from `hbtn_0e_6_usa`."""
 
 import sys
 from sqlalchemy import create_engine
 from model_state import Base, State
 from sqlalchemy.orm import sessionmaker
+from model_city import City
 
 if __name__ == "__main__":
     # Get the commands-line:
@@ -30,7 +31,10 @@ if __name__ == "__main__":
     session = Session()
 
     # Make query
-    for instance in session.query(State).order_by(State.id.asc()):
-        print(f"{instance.id}: {instance.name}")
+    states = session.query(State).order_by(State.id.asc())
+
+    # Display all State object
+    for state in states:
+        print(f"{state.id}: {state.name}")
 
     session.close()

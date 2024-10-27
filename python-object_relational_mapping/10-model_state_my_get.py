@@ -33,7 +33,6 @@ if __name__ == "__main__":
     query = (
         session.query(State)
         .filter(State.name == state_name_to_search)
-        .order_by(State.id)
         .all()
     )
     if not query:

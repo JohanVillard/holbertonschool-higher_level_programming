@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""This module displays values."""
+"""This module displays all values in the `states`."""
 
 import MySQLdb
 import sys
@@ -27,7 +27,9 @@ if __name__ == "__main__":
     sql = "SELECT * \
             FROM states \
             WHERE name = '{}' \
-            ORDER BY states.id ASC".format(state_name_searched)
+            ORDER BY states.id ASC" \
+            .format(state_name_searched)
+
     cursor.execute(sql)
 
     # All fetched at once

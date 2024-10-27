@@ -1,9 +1,10 @@
 #!/usr/bin/python3
-"""This module prints the first `State`object from `hbtn_0e_6_usa`."""
+"""This module prints the first `State` object from `hbtn_0e_6_usa`."""
 
 import sys
 from sqlalchemy import create_engine
 from model_state import Base, State
+from model_city import City
 from sqlalchemy.orm import sessionmaker
 
 if __name__ == "__main__":
@@ -28,10 +29,10 @@ if __name__ == "__main__":
     session = Session()
 
     # Get first object
-    query = session.query(State).first()
-    if not query:
+    state = session.query(State).order_by(State.id.asc()).first()
+    if not state:
         print("Nothing")
     else:
-        print(f"{query.id}: {query.name}")
+        print(f"{state.id}: {state.name}")
 
     session.close()

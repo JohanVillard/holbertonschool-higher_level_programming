@@ -12,11 +12,14 @@ class State(Base):
     """Represent a State sql table."""
 
     __tablename__ = "states"
+
     id = Column(
         Integer,
-        autoincrement="auto",
+        autoincrement=True,
         nullable=False,
         primary_key=True
         )
     name = Column(String(128), nullable=False)
+
+    # Define the relationship to City
     cities = relationship("City", back_populates="state")

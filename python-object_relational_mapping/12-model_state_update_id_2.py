@@ -5,6 +5,7 @@ import sys
 from sqlalchemy import create_engine
 from model_state import Base, State
 from sqlalchemy.orm import sessionmaker
+from model_city import City
 
 if __name__ == "__main__":
     # Get the commands-line
@@ -28,7 +29,7 @@ if __name__ == "__main__":
     session = Session()
 
     # Update value
-    session.query(State).filter(State.id == 2).update({"name": "New Mexico"})
+    session.query(State).filter(State.id == 2).update({State.name: "New Mexico"})
 
     # Validate changes in db
     session.commit()

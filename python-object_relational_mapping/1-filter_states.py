@@ -34,11 +34,11 @@ if __name__ == "__main__":
     )
 
     # Fetch All-at-Once
-    results = cursor.fetchall()
+    states = cursor.fetchall()
 
     # Display results
-    for row in results:
-        print(row)
+    for state in states:
+        print(state)
 
     # Close cursor and connexion
     cursor.close()
