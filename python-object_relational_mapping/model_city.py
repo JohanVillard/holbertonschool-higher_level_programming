@@ -13,7 +13,7 @@ class City(Base):
 
     id = Column(
         Integer,
-        autoincrement="auto",
+        autoincrement=True,
         primary_key=True,
         nullable=False
         )

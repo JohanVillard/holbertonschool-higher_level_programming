@@ -12,6 +12,7 @@ class State(Base):
     """Represent a State sql table."""
 
     __tablename__ = "states"
+    __table_args__ = { "mysql_charset": "latin1"}
 
     id = Column(
         Integer,
