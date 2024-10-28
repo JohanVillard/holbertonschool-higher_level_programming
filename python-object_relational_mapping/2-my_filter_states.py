@@ -33,10 +33,11 @@ if __name__ == "__main__":
     cursor.execute(sql)
 
     # All fetched at once
-    state = cursor.fetchone()
+    states = cursor.fetchall()
 
     # Print results
-    print(state)
+    for state in states:
+        print(state)
 
     # Clean up
     cursor.close()
