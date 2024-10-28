@@ -5,6 +5,7 @@ import sys
 from sqlalchemy import create_engine
 from model_state import Base, State
 from sqlalchemy.orm import sessionmaker
+from model_city import City
 
 if __name__ == "__main__":
     # Get the commands-line:
@@ -23,14 +24,12 @@ if __name__ == "__main__":
     # Create tables
     Base.metadata.create_all(engine)
 
-    # Create a new session
+    # Create and instance a new session
     Session = sessionmaker(bind=engine)
+    session = Session()
 
     # Create an entry
     louisiana = State(name="Louisiana")
-
-    # Instance a session
-    session = Session()
 
     # Add a user in the table
     session.add(louisiana)
@@ -38,9 +37,6 @@ if __name__ == "__main__":
     # Commit the session to saves changes
     session.commit()
 
-    # Get Lousiana's id - add first() to run the query...
-    state = session.query(State).filter(State.name == louisiana.name).first()
-
-    print(state.id)
+    print(louisiana.id)
 
     session.close()
