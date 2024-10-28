@@ -13,5 +13,4 @@ if __name__ == "__main__":
         ),
         pool_pre_ping=True,
     )
-
     Base.metadata.create_all(engine)
