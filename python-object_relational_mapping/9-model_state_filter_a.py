@@ -31,7 +31,7 @@ if __name__ == "__main__":
 
     query = (
         session.query(State)
-        .filter(State.name.like("%a%"))
+        .filter(State.name.ilike("%a%"))
         .order_by(State.id.asc())
         .all()
     )
