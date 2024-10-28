@@ -27,7 +27,7 @@ if __name__ == "__main__":
     sql = """
         SELECT *
         FROM states
-        WHERE name = '{}'
+        WHERE BINARY name = '{}'
         ORDER BY states.id ASC
         """.format(state_name_searched)
 
