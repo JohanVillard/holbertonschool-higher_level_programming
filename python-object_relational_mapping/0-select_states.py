@@ -12,7 +12,7 @@ if __name__ == "__main__":
 
     # Connection to the database
     # Create a connexion object
-    connection = MySQLdb.connect(
+    connexion = MySQLdb.connect(
         host="localhost",
         user=mysql_username,
         passwd=mysql_password,
@@ -21,19 +21,19 @@ if __name__ == "__main__":
     )
 
     # Create a cursor object
-    cursor = connection.cursor()
+    cursor = connexion.cursor()
 
     # Execute SQL query
     # Display city starting with a N
     cursor.execute("SELECT * FROM states ORDER BY states.id ASC")
 
     # Fetch All-at-Once
-    results = cursor.fetchall()
+    states = cursor.fetchall()
 
     # Display results
-    for row in results:
-        print(row)
+    for state in states:
+        print(state)
 
     # Close cursor and connexion
     cursor.close()
-    connection.close()
+    connexion.close()

@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""This module lists all states starting with N."""
+"""This module lists all states starting with N from hbtn_0e_0_usa."""
 
 import MySQLdb
 import sys
@@ -12,7 +12,7 @@ if __name__ == "__main__":
 
     # Connection to the database
     # Create a connexion object
-    connection = MySQLdb.connect(
+    connexion = MySQLdb.connect(
         host="localhost",
         user=mysql_username,
         passwd=mysql_password,
@@ -21,16 +21,18 @@ if __name__ == "__main__":
     )
 
     # Create a cursor object
-    cursor = connection.cursor()
+    cursor = connexion.cursor()
 
     # Execute SQL query
     # Display city starting with a N
     cursor.execute(
-        "SELECT * \
-        FROM states \
-        WHERE states.name \
-        LIKE 'N%' \
-        ORDER BY states.id ASC"
+        """
+        SELECT *
+        FROM states
+        WHERE name
+        LIKE 'N%'
+        ORDER BY id ASC
+        """
     )
 
     # Fetch All-at-Once
@@ -42,4 +44,4 @@ if __name__ == "__main__":
 
     # Close cursor and connexion
     cursor.close()
-    connection.close()
+    connexion.close()
