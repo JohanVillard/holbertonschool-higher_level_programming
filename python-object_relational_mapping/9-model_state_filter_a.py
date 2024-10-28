@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""This module lists all `State` objects from `hbtn_0e_6_usa`."""
+"""This module lists all `State` containing `a` from `hbtn_0e_6_usa`."""
 
 import sys
 from sqlalchemy import create_engine
@@ -23,22 +23,20 @@ if __name__ == "__main__":
     # Create tables
     Base.metadata.create_all(engine)
 
-    # Create a new session
+    # Create and instance a new session
     Session = sessionmaker(bind=engine)
-
-    # Instance a session
     session = Session()
 
+    # Get State containing a
     query = (
         session.query(State)
         .filter(State.name.ilike("%a%"))
         .order_by(State.id.asc())
         .all()
     )
-    if not query:
-        print("Nothing")
-    else:
-        for state in query:
-            print(f"{state.id}: {state.name}")
+
+    # Print result
+    for state in query:
+        print(f"{state.id}: {state.name}")
 
     session.close()
