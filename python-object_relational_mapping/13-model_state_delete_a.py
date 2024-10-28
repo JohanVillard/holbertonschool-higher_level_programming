@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""This module changes the name of a `State` from a `hbtn_0e_6_usa`."""
+"""This module deletes `State` containing `a` from a `hbtn_0e_6_usa`."""
 
 import sys
 from sqlalchemy import create_engine
@@ -29,7 +29,7 @@ if __name__ == "__main__":
     session = Session()
 
     # Create the delete query
-    session.query(State).filter(State.name.like("%a%")).delete(
+    session.query(State).filter(State.name.ilike("%a%")).delete(
         synchronize_session=False
     )
 
