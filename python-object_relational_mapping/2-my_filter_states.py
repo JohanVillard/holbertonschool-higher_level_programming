@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""This module displays all values in the `states`."""
+"""This module displays all values matched the argument in the `states`."""
 
 import MySQLdb
 import sys
@@ -23,7 +23,7 @@ if __name__ == "__main__":
     # Create a cursor
     cursor = connexion.cursor()
 
-    # Execute a SQL query
+    # Create and execute a SQL query
     sql = """
         SELECT *
         FROM states WHERE name = '{}'
