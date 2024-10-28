@@ -23,14 +23,13 @@ if __name__ == "__main__":
     # Create a cursor object
     cursor = connexion.cursor()
 
-    # Execute SQL query
-    # Display city starting with a N
+    # Search city starting with a N
     cursor.execute(
         """
         SELECT *
         FROM states
         WHERE name
-        LIKE 'N%'
+        LIKE BINARY 'N%'
         ORDER BY id ASC
         """
     )

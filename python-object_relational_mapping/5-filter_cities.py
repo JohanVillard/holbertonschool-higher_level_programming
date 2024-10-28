@@ -24,17 +24,17 @@ if __name__ == "__main__":
     cursor = connexion.cursor()
 
     # Create sql queries
-    sql_queries = " \
-        SELECT DISTINCT sorted_cities.name \
-        FROM ( \
-                SELECT * \
-                FROM cities \
-                ORDER BY cities.id ASC \
-            ) sorted_cities \
-        JOIN states \
-        ON sorted_cities.state_id = states.id \
-        WHERE states.name = %s \
-        "
+    sql_queries = """
+        SELECT DISTINCT sorted_cities.name
+        FROM (
+                SELECT *
+                FROM cities
+                ORDER BY cities.id ASC
+            ) sorted_cities
+        JOIN states
+        ON sorted_cities.state_id = states.id
+        WHERE states.name = %s
+        """
 
     # Execute protected SQL queries (tuple style)
     cursor.execute(sql_queries, (state_name,))

@@ -26,7 +26,8 @@ if __name__ == "__main__":
     # Create and execute a SQL query
     sql = """
         SELECT *
-        FROM states WHERE name = '{}'
+        FROM states
+        WHERE name = '{}'
         ORDER BY states.id ASC
         """.format(state_name_searched)
 
