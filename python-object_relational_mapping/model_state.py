@@ -11,7 +11,7 @@ Base = declarative_base()
 class State(Base):
     """Represent a State sql table."""
 
-    __tablename__ = "states"
+    __tablename__ = 'states'
 
     id = Column(
         Integer,
