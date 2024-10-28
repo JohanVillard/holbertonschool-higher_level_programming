@@ -1,11 +1,12 @@
 #!/usr/bin/python3
-"""This module lists all `State` objects from `hbtn_0e_6_usa`."""
+"""This module lists a `State` equal to argument from `hbtn_0e_6_usa`."""
 
 import sys
 from sqlalchemy import create_engine
 from model_state import Base, State
 from sqlalchemy.orm import sessionmaker
 from model_city import City
+
 if __name__ == "__main__":
     # Get the commands-line:
     mysql_username = sys.argv[1]
@@ -26,19 +27,19 @@ if __name__ == "__main__":
 
     # Create a new session
     Session = sessionmaker(bind=engine)
-
-    # Instance a session
     session = Session()
 
+    # Search for one result corresponding to argv[4]
     query = (
         session.query(State)
         .filter(State.name == state_name_to_search)
-        .all()
+        .first()
     )
-    if not query:
+
+    # Print the result
+    if query is None:
         print("Not found")
     else:
-        for state in query:
-            print(state.id)
+        print(query.id)
 
     session.close()
