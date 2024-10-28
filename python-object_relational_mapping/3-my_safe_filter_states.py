@@ -9,7 +9,7 @@ if __name__ == "__main__":
     mysql_username = sys.argv[1]
     mysql_password = sys.argv[2]
     database_name = sys.argv[3]
-    state_name_search = sys.argv[4]
+    state_name_searched = sys.argv[4]
 
     # Connect to database
     connexion = MySQLdb.connect(
@@ -26,7 +26,7 @@ if __name__ == "__main__":
     # Execute safe SQL query
     sql = "SELECT * FROM states WHERE states.name = %s ORDER BY states.id ASC"
     # Place state_name_search in an immutable tuple
-    cursor.execute(sql, (state_name_search,))
+    cursor.execute(sql, (state_name_searched,))
 
     # Get the results
     rows = cursor.fetchall()
