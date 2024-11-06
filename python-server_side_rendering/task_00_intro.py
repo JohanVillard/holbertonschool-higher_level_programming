@@ -38,9 +38,9 @@ def generate_invitations(template, attendees):
             try:
                 with open(f"output_{i}.txt", "w") as f:
                     f.write(template_to_write)
+                    i += 1
             except Exception as e:
                 logging.error(f"The file output_{i}.txt could not be created : {e}")
-            i += 1
     except Exception as e:
         logging.error(e)
 
