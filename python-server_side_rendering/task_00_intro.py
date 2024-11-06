@@ -36,10 +36,3 @@ def generate_invitations(template, attendees):
             i += 1
     except Exception as e:
         logging.error(e)
-
-
-def is_list_of_dict(attendees):
-    """Check if the object is a list af dictionaries."""
-    return isinstance(attendees, list) and all(
-        isinstance(attendee, dict) for attendee in attendees
-    )
