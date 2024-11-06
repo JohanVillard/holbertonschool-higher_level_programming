@@ -8,14 +8,11 @@ with open("template.txt", "r") as f:
 def generate_invitations(template, attendees):
     """Generate invitation."""
     try:
-        try:
-            if not isinstance(template, str):
-                raise TypeError(f"{type(template)}")
+        if not isinstance(template, str):
+            raise TypeError(f"Template have invalid type: {type(template)}")
 
-            if not is_list_of_dict(attendees):
-                raise TypeError(f"{type(attendees)}")
-        except TypeError as e:
-            logging.error(e)
+        if not is_list_of_dict(attendees):
+            raise TypeError(f"Attendees have invalid type: {type(attendees)}")
 
         if not template:
             raise ValueError("Template is empty, no output files generated.")
@@ -36,6 +33,7 @@ def generate_invitations(template, attendees):
                 template_to_write = template_to_write.replace(key_without_brace, value)
 
             while os.path.exists(f"output_{i}.txt"):
+                print(f"output_{i}.txt already exists.")
                 i += 1
 
             try:
