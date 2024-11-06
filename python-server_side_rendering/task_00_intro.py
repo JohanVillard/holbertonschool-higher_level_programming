@@ -1,6 +1,9 @@
 import logging
 import os
 
+# Configuration du logging
+logging.basicConfig(level=logging.ERROR)
+
 with open("template.txt", "r") as f:
     template = f.read()
 
