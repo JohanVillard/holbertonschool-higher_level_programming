@@ -1,5 +1,4 @@
 import logging
-import os
 
 with open("template.txt", "r") as f:
     src = f.read()
@@ -32,10 +31,8 @@ def generate_invitations(template, attendees):
                 key_without_brace = f"{{{key}}}"
                 template_to_write = template_to_write.replace(key_without_brace, value)
 
-            if os.path.exists(f"output_{i}.txt"):
-                i += 1
-                continue
-
+            with open(f"output_{i}.txt", "w") as f:
+                f.write(template_to_write)
             i += 1
     except Exception as e:
         logging.error(e)
