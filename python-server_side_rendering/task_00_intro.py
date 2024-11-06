@@ -35,8 +35,11 @@ def generate_invitations(template, attendees):
             while os.path.exists(f"output_{i}.txt"):
                 i += 1
 
-            with open(f"output_{i}.txt", "w") as f:
-                f.write(template_to_write)
+            try:
+                with open(f"output_{i}.txt", "w") as f:
+                    f.write(template_to_write)
+            except Exception as e:
+                logging.error(f"The file output_{i}.txt could not be created : {e}")
             i += 1
     except Exception as e:
         logging.error(e)
