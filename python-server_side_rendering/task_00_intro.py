@@ -2,7 +2,7 @@ import logging
 import os
 
 with open("template.txt", "r") as f:
-    src = f.read()
+    template = f.read()
 
 
 def generate_invitations(template, attendees):
