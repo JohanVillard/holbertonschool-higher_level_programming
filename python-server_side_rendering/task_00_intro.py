@@ -8,11 +8,14 @@ with open("template.txt", "r") as f:
 def generate_invitations(template, attendees):
     """Generate invitation."""
     try:
-        if not isinstance(template, str):
-            raise TypeError(f"Template have invalid type: {type(template)}")
+        try:
+            if not isinstance(template, str):
+                raise TypeError(f"Template have invalid type: {type(template)}")
 
-        if not is_list_of_dict(attendees):
-            raise TypeError(f"Attendees have invalid type: {type(attendees)}")
+            if not is_list_of_dict(attendees):
+                raise TypeError(f"Attendees have invalid type: {type(attendees)}")
+        except TypeError as e:
+            logging.error(e)
 
         if not template:
             raise ValueError("Template is empty, no output files generated.")
