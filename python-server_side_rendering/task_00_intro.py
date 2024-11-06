@@ -36,8 +36,6 @@ def generate_invitations(template, attendees):
                 i += 1
                 continue
 
-            with open(f"output_{i}.txt", "w") as f:
-                f.write(template_to_write)
             i += 1
     except Exception as e:
         logging.error(e)
