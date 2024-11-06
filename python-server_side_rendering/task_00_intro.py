@@ -10,10 +10,10 @@ def generate_invitations(template, attendees):
     try:
         try:
             if not isinstance(template, str):
-                raise TypeError(f"Template have invalid type: {type(template)}")
+                raise TypeError(f"{type(template)}")
 
             if not is_list_of_dict(attendees):
-                raise TypeError(f"Attendees have invalid type: {type(attendees)}")
+                raise TypeError(f"{type(attendees)}")
         except TypeError as e:
             logging.error(e)
 
