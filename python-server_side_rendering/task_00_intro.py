@@ -29,8 +29,8 @@ def generate_invitations(template, attendees):
 
             template_to_write = template
             for key, value in attendee.items():
-                key_sans_accolade = f"{{{key}}}"
-                template_to_write = template_to_write.replace(key_sans_accolade, value)
+                key_without_brace = f"{{{key}}}"
+                template_to_write = template_to_write.replace(key_without_brace, value)
 
             if os.path.exists(f"output_{i}.txt"):
                 i += 1
