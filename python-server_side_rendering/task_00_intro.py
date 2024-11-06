@@ -1,9 +1,6 @@
 import logging
 import os
 
-# Configuration du logging
-logging.basicConfig(level=logging.ERROR)
-
 with open("template.txt", "r") as f:
     template = f.read()
 
@@ -40,7 +37,7 @@ def generate_invitations(template, attendees):
                 i += 1
 
             try:
-                with open(f"output_{i}.txt", "w") as f:
+                with open(f"output_{i}.txt", "w", encoding="utf-8") as f:
                     f.write(template_to_write)
                     i += 1
             except Exception as e:
