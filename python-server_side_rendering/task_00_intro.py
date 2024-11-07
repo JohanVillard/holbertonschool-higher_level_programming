@@ -8,7 +8,7 @@ with open("template.txt", "r") as f:
 
 
 def generate_invitations(template, attendees):
-    """Generate invitation."""
+    """Generate invitation with a template."""
     try:
         if not isinstance(template, str):
             raise TypeError(f"Template have invalid type: {type(template)}")
