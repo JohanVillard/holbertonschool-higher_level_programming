@@ -47,7 +47,8 @@ def products():
             cur.execute("SELECT * FROM Products")
         except sqlite3.Error:
             return render_template(
-                "product_display.html", products=products), 500
+                "product_display.html", products="SQL request fails."
+            ), 500
 
         sql_products = cur.fetchall()
         conn.close()
@@ -68,7 +69,9 @@ def products():
             with open("products.json", "r") as f:
                 products = json.load(f)
         except (FileNotFoundError, json.JSONDecodeError):
-            return render_template("product_display.html", products=products)
+            return render_template(
+                "product_display.html", products="Invalid json file."
+            ), 404
 
     elif source == "csv":
         try:
@@ -82,21 +85,30 @@ def products():
                     product = {k: v.strip() for k, v in raw_product.items()}
                     products.append(product)
         except FileNotFoundError:
-            return render_template("product_display.html", products=products)
+            return render_template(
+                "product_display.html", products="Invalid CSV file."
+                ), 404
 
     else:
         return render_template(
-            "product_display.html", products="Wrong source"), 400
+            "product_display.html", products="Wrong source"
+            ), 400
 
     if not product_id:
         return render_template("product_display.html", products=products)
 
-    for product in products:
-        if str(product["id"]) == product_id:
-            return render_template("product_display.html", products=[product])
+    # Build the dict in a list by id
+    products = [
+        product for product in products if str(product["id"]) == product_id
+        ]
 
-    return render_template(
-        "product_display.html", products="Product not found"), 404
+    # Error if user specified an id which is not in database
+    if not products:
+        return render_template(
+            "product_display.html", products="Product not found"
+        ), 404
+
+    return render_template("product_display.html", products=products)
 
 
 if __name__ == "__main__":
