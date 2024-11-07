@@ -1,7 +1,7 @@
 <title>Items List</title>
 <ul>
   {% if not items %}
-  <li>No items found</li>
+  {{ "No items found" }}
   {% else %}
   {% for item in items %}
   <li>{{ item }}</li>
