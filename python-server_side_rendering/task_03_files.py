@@ -32,11 +32,11 @@ def products():
     source = request.args.get("source")
     product_id = request.args.get("id")
 
-    if source.endswith(".json"):
+    if source.endswith("json"):
         with open(source, "r") as f:
             products = json.load(f)
 
-    elif source.endswith(".csv"):
+    elif source.endswith("csv"):
         with open("products.csv", newline="") as f:
             csv_reader = csv.DictReader(f)
             products = [row for row in csv_reader]
