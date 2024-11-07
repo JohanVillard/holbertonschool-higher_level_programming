@@ -57,10 +57,7 @@ def products():
         if str(product["id"]) == product_id:
             return render_template("product_display.html", products=[product])
 
-    else:
-        return render_template(
-            "product_display.html", products="Product not found"
-        ), 400
+    return render_template("product_display.html", products="Product not found"), 404
 
 
 if __name__ == "__main__":
