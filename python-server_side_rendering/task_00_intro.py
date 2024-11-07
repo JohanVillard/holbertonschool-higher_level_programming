@@ -7,7 +7,7 @@ try:
     with open("template.txt", "r", encoding="utf-8") as f:
         template = f.read()
 except Exception:
-    logging.error("template.txt could not be read.")
+    logging.error("template.txt could not be read : {e}")
 
 
 def generate_invitations(template, attendees):
