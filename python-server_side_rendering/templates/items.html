@@ -1,10 +1,12 @@
 <title>Items List</title>
 <ul>
-  {% if not items %}
+  {% for key, value in items_list.items() %}
+  {% if not value %}
   {{ "No items found" }}
   {% else %}
-  {% for item in items %}
+  {% for item in value %}
   <li>{{ item }}</li>
   {% endfor %}
   {% endif %}
+  {% endfor %}
 </ul>
