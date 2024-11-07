@@ -4,7 +4,7 @@ import logging
 import os
 
 try:
-    with open("template.txt", "r") as f:
+    with open("template.txt", "r", encoding="utf-8") as f:
         template = f.read()
 except Exception:
     logging.error("template.txt could not be read.")
