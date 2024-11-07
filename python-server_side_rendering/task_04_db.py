@@ -1,5 +1,7 @@
-from flask import Flask, render_template, json, request, abort
+from flask import Flask, render_template, request, abort
 import csv
+import json
+import sqlite3
 
 app = Flask(__name__)
 
@@ -37,7 +39,30 @@ def products():
     if id is None:
         abort(400)
 
-    if source == "json":
+    if source == "sql":
+        conn = sqlite3.connect("products.db")
+        cur = conn.cursor()
+
+        try:
+            cur.execute("SELECT * FROM Products")
+        except sqlite3.Error:
+            return render_template("product_display.html", products=products), 500
+
+        sql_products = cur.fetchall()
+        conn.close()
+
+        # Convert list of tuples into list of dict
+        products = [
+            {
+                "id": tup_product[0],
+                "name": tup_product[1],
+                "category": tup_product[2],
+                "price": tup_product[3],
+            }
+            for tup_product in sql_products
+        ]
+
+    elif source == "json":
         try:
             with open("products.json", "r") as f:
                 products = json.load(f)
