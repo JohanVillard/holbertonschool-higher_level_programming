@@ -8,7 +8,7 @@
   {% else %}
 
   {% for item in list %}
-  <li>{{ item }}</li>
+  <li>{{ item|e }}</li>
   {% endfor %}
 
   {% endif %}
