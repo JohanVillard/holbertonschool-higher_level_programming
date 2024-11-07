@@ -55,9 +55,7 @@ def products():
 
     for product in products:
         if str(product["id"]) == product_id:
-            product_by_id = []
-            product_by_id.append(product)
-            return render_template("product_display.html", products=product_by_id)
+            return render_template("product_display.html", products=[product])
 
     else:
         return render_template(
