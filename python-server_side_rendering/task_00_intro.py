@@ -3,8 +3,11 @@
 import logging
 import os
 
-with open("template.txt", "r") as f:
-    template = f.read()
+try:
+    with open("template.txt", "r") as f:
+        template = f.read()
+except Exception:
+    logging.error("template.txt could not be read.")
 
 
 def generate_invitations(template, attendees):
@@ -16,7 +19,7 @@ def generate_invitations(template, attendees):
         if not is_list_of_dict(attendees):
             raise TypeError(f"Attendees have invalid type: {type(attendees)}")
 
-        # Delete the whitespaces and check there is a string
+        # Delete the whitespaces and check if there is a string
         if not template.strip():
             raise ValueError("Template is empty, no output files generated.")
 
