@@ -15,14 +15,14 @@
       <td>{{ product["name"] }}</td>
       <td>{{ product["category"] }}</td>
       <td>{{ product["price"] }}</td>
-      {% endfor %}
-
     </tr>
+    {% endfor %}
+
   </tbody>
 </table>
 
 {% else %}
 
-{{ products }}
+<p>{{ products }}</p>
 
 {% endif %}
