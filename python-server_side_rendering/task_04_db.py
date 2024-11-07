@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, abort
+from flask import Flask, render_template, request
 import csv
 import json
 import sqlite3
@@ -33,11 +33,11 @@ def items():
 def products():
     source = request.args.get("source")
     if source is None:
-        abort(400)
+        return render_template(
+                "product_display.html", products="Bad request."
+            ), 400
 
     product_id = request.args.get("id")
-    if id is None:
-        abort(400)
 
     if source == "sql":
         conn = sqlite3.connect("products.db")
