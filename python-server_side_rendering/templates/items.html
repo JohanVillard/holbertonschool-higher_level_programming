@@ -2,15 +2,12 @@
 <ul>
   {% for key, list in items_list.items() %}
 
-  {%- if not list -%}
-  No items found
+  {% for item in list %}
+  <li>{{ item }}</li>
 
   {% else %}
+  No items found
 
-  {% for item in list %}
-  <li>{{ item|e }}</li>
   {% endfor %}
-
-  {% endif %}
   {% endfor %}
 </ul>
