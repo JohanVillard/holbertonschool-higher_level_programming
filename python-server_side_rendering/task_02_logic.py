@@ -22,6 +22,7 @@ def contact():
 def items():
     with open("items.json", "r") as f:
         items_list = json.load(f)
+
     return render_template("items.html", items=items_list["items"])
 
 
