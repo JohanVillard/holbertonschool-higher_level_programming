@@ -1,3 +1,5 @@
 {
-  "items": []
+  "items": ["Python Book", "Flask Mug", "Jinja Sticker"],
+  "items_bis": ["C Book", "Angular Mug", "C# Sticker"],
+  "items_empty": []
 }
