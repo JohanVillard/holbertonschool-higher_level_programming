@@ -1,4 +1,4 @@
-from flask import Flask, render_template, json, request
+from flask import Flask, render_template, json, request, abort
 import csv
 
 app = Flask(__name__)
@@ -30,7 +30,12 @@ def items():
 @app.route("/products")
 def products():
     source = request.args.get("source")
+    if source is None:
+        abort(400)
+
     product_id = request.args.get("id")
+    if id is None:
+        abort(400)
 
     if source == "json":
         with open("products.json", "r") as f:
