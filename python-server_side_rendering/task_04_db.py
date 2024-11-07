@@ -46,7 +46,8 @@ def products():
         try:
             cur.execute("SELECT * FROM Products")
         except sqlite3.Error:
-            return render_template("product_display.html", products=products), 500
+            return render_template(
+                "product_display.html", products=products), 500
 
         sql_products = cur.fetchall()
         conn.close()
@@ -84,7 +85,8 @@ def products():
             return render_template("product_display.html", products=products)
 
     else:
-        return render_template("product_display.html", products="Wrong source"), 400
+        return render_template(
+            "product_display.html", products="Wrong source"), 400
 
     if not product_id:
         return render_template("product_display.html", products=products)
@@ -93,7 +95,8 @@ def products():
         if str(product["id"]) == product_id:
             return render_template("product_display.html", products=[product])
 
-    return render_template("product_display.html", products="Product not found"), 404
+    return render_template(
+        "product_display.html", products="Product not found"), 404
 
 
 if __name__ == "__main__":
