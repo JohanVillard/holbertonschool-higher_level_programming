@@ -35,9 +35,9 @@ def generate_invitations(template, attendees):
                 template_to_write = template_to_write.replace(
                     "{event_location}", attendee.get("event_location") or "N/A"
                 )
-            while os.path.exists(f"output_{i}.txt"):
+            if os.path.exists(f"output_{i}.txt"):
                 print(f"output_{i}.txt already exists.")
-                i += 1
+                continue
 
             with open(f"output_{i}.txt", "w", encoding="utf-8") as f:
                 f.write(template_to_write)
