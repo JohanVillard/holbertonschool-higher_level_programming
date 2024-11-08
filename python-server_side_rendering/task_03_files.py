@@ -39,8 +39,6 @@ def products():
     message = None
 
     source = request.args.get("source", "")
-    if source is None:
-        message = "Bad request."
 
     product_id = request.args.get("id", None)
 
@@ -69,6 +67,7 @@ def products():
             # Error if user specified an id which is not in database
             if not products_to_send:
                 message = "Product not found"
+
     except FileNotFoundError:
         message = "File not found."
 
