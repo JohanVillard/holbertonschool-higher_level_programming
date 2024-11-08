@@ -39,7 +39,7 @@ def products():
     if source is None:
         return render_template("product_display.html", products="Bad request."), 400
 
-    product_id = request.args.get("id" None)
+    product_id = request.args.get("id", None)
 
     if source == "json":
         try:
