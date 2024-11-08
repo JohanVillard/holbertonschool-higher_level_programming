@@ -9,19 +9,19 @@ with open("template.txt", "r") as f:
 
 def generate_invitations(template, attendees):
     """Generate invitation."""
-    if not isinstance(template, str):
-        raise TypeError(f"Template have invalid type: {type(template)}")
-
-    if not is_list_of_dict(attendees):
-        raise TypeError(f"Attendees have invalid type: {type(attendees)}")
-
-    if not template:
-        raise ValueError("Template is empty, no output files generated.")
-
-    if not attendees:
-        raise ValueError("No data provided, no output files generated.")
-
     try:
+        if not isinstance(template, str):
+            raise TypeError(f"Template have invalid type: {type(template)}")
+
+        if not is_list_of_dict(attendees):
+            raise TypeError(f"Attendees have invalid type: {type(attendees)}")
+
+        if not template:
+            raise ValueError("Template is empty, no output files generated.")
+
+        if not attendees:
+            raise ValueError("No data provided, no output files generated.")
+
         # File incrementer
         i = 1
         for attendee in attendees:
