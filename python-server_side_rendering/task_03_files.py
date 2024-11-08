@@ -41,6 +41,8 @@ def products():
 
     product_id = request.args.get("id", None)
 
+    if source not in ["json", "csv"]:
+        return render_template("product_display.html", products="Wrong source"), 400
     if source == "json":
         try:
             with open("products.json", "r") as f:
@@ -65,9 +67,6 @@ def products():
             return render_template(
                 "product_display.html", products="Invalid CSV file."
             ), 404
-
-    else:
-        return render_template("product_display.html", products="Wrong source"), 400
 
     if not product_id:
         return render_template("product_display.html", products=products)
