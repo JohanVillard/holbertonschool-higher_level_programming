@@ -42,7 +42,8 @@ def generate_invitations(template, attendees):
             try:
                 with open(f"output_{i}.txt", "x", encoding="utf-8") as f:
                     f.write(template_to_write)
-                    i += 1
+                    print(f"output__{i}.txt created.")
+                i += 1
             except Exception as e:
                 print(f"output_{i}.txt could not be created : {e}")
     except Exception as e:
