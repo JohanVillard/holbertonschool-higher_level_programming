@@ -34,7 +34,7 @@ def items():
 
 
 @app.route("/products")
-def display_products():
+def products():
     products_to_send = []
     message = None
 
@@ -43,6 +43,9 @@ def display_products():
         message = "Bad request."
 
     product_id = request.args.get("id", None)
+
+    if source not in ["json", "csv"]:
+        message = "Wrong source"
 
     if source == "json":
         try:
@@ -59,9 +62,6 @@ def display_products():
 
         except FileNotFoundError:
             message = "Invalid CSV file."
-
-    else:
-        message = "Wrong source"
 
     if not product_id:
         products_to_send = products
