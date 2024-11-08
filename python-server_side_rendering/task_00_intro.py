@@ -18,35 +18,30 @@ def generate_invitations(template, attendees):
         raise ValueError("No data provided, no output files generated.")
 
     # File incrementer
-    i = 1
-    for attendee in attendees:
+    for index, attendee in enumerate(attendees, start=1):
         try:
             template_to_write = template
-            for key, value in attendee.items():
-                template_to_write = template_to_write.replace(
-                    "{name}", attendee.get("name") or "N/A"
-                )
-                template_to_write = template_to_write.replace(
-                    "{event_title}", attendee.get("event_title") or "N/A"
-                )
-                template_to_write = template_to_write.replace(
-                    "{event_date}", attendee.get("event_date") or "N/A"
-                )
-                template_to_write = template_to_write.replace(
-                    "{event_location}", attendee.get("event_location") or "N/A"
-                )
-            while os.path.exists(f"output_{i}.txt"):
-                print(f"output_{i}.txt already exists.")
-                i += 1
+            template_to_write = template_to_write.replace(
+                "{name}", attendee.get("name") or "N/A"
+            )
+            template_to_write = template_to_write.replace(
+                "{event_title}", attendee.get("event_title") or "N/A"
+            )
+            template_to_write = template_to_write.replace(
+                "{event_date}", attendee.get("event_date") or "N/A"
+            )
+            template_to_write = template_to_write.replace(
+                "{event_location}", attendee.get("event_location") or "N/A"
+            )
+            while os.path.exists(f"output_{index}.txt"):
+                index += 1
 
-            with open(f"output_{i}.txt", "w", encoding="utf-8") as f:
+            with open(f"output_{index}.txt", "w", encoding="utf-8") as f:
                 f.write(template_to_write)
-                print(f"output__{i}.txt created.")
-
-            i += 1
+                print(f"output__{index}.txt created.")
 
         except Exception as e:
-            print(f"output_{i}.txt could not be created : {e}")
+            print(f"output_{index}.txt could not be created : {e}")
 
 
 def is_list_of_dict(attendees):
