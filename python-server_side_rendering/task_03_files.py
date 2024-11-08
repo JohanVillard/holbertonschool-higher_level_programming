@@ -52,19 +52,11 @@ def products():
             with open("products.json", "r") as f:
                 products = json.load(f)
 
-    except (FileNotFoundError, json.JSONDecodeError):
-        message = "Invalid json file."
-
-    try:
         if source == "csv":
             with open("products.csv", "r") as f:
                 csv_reader = csv.DictReader(f)
                 products = [row for row in csv_reader]
 
-    except FileNotFoundError:
-        message = "Invalid CSV file."
-
-    try:
         if not product_id:
             products_to_send = products
 
@@ -77,6 +69,8 @@ def products():
             # Error if user specified an id which is not in database
             if not products_to_send:
                 message = "Product not found"
+    except FileNotFoundError:
+        message = "File not found."
 
     except Exception as e:
         message = f"An error occured: {e}"
