@@ -23,11 +23,12 @@ def contact():
 def items():
     try:
         with open("items.json", "r") as f:
-            items_list = json.load(f)
+            data = json.load(f)
+            items_list = data.get("items")
     except FileNotFoundError:
         items_list = []
 
-    return render_template("items.html", items=items_list["items"])
+    return render_template("items.html", items=items_list)
 
 
 if __name__ == "__main__":
