@@ -47,34 +47,39 @@ def products():
     if source not in ["json", "csv"]:
         message = "Wrong source"
 
-    if source == "json":
-        try:
+    try:
+        if source == "json":
             with open("products.json", "r") as f:
                 products = json.load(f)
-        except (FileNotFoundError, json.JSONDecodeError):
-            message = "Invalid json file."
 
-    elif source == "csv":
-        try:
+    except (FileNotFoundError, json.JSONDecodeError):
+        message = "Invalid json file."
+
+    try:
+        if source == "csv":
             with open("products.csv", "r") as f:
                 csv_reader = csv.DictReader(f)
                 products = [row for row in csv_reader]
 
-        except FileNotFoundError:
-            message = "Invalid CSV file."
+    except FileNotFoundError:
+        message = "Invalid CSV file."
 
-    if not product_id:
-        products_to_send = products
+    try:
+        if not product_id:
+            products_to_send = products
 
-    else:
-        # Build the dict in a list by id
-        products_to_send = [
-            product for product in products if str(product["id"]) == product_id
-        ]
+        else:
+            # Build the dict in a list by id
+            products_to_send = [
+                product for product in products if str(product["id"]) == product_id
+            ]
 
-        # Error if user specified an id which is not in database
-        if not products_to_send:
-            message = "Product not found"
+            # Error if user specified an id which is not in database
+            if not products_to_send:
+                message = "Product not found"
+
+    except Exception as e:
+        message = f"An error occured: {e}"
 
     return render_template(
         "product_display.html", products=products_to_send, message=message
