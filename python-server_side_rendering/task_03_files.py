@@ -35,7 +35,7 @@ def items():
 
 @app.route("/products")
 def products():
-    products_to_send = []
+    products = []
     message = None
 
     source = request.args.get("source", "")
@@ -55,17 +55,15 @@ def products():
                 csv_reader = csv.DictReader(f)
                 products = [row for row in csv_reader]
 
-        if not product_id:
-            products_to_send = products
-
-        else:
+        if product_id:
             # Build the dict in a list by id
-            products_to_send = [
-                product for product in products if str(product["id"]) == product_id
+            products = [
+                product for product in products
+                if str(product["id"]) == product_id
             ]
 
             # Error if user specified an id which is not in database
-            if not products_to_send:
+            if not products:
                 message = "Product not found"
 
     except FileNotFoundError:
@@ -75,8 +73,8 @@ def products():
         message = f"An error occured: {e}"
 
     return render_template(
-        "product_display.html", products=products_to_send, message=message
-    )
+        "product_display.html", products=products, message=message
+        )
 
 
 if __name__ == "__main__":
