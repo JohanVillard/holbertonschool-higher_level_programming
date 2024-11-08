@@ -43,7 +43,6 @@ def generate_invitations(template, attendees):
                     i += 1
             except Exception as e:
                 print(f"output_{i}.txt could not be created : {e}")
-
         except Exception as e:
             print(f"An error occured: {e}")
 
