@@ -1,13 +1,12 @@
 """This module defines a function that generates invitations."""
 
-import logging
 import os
 
 try:
     with open("template.txt", "r", encoding="utf-8") as f:
         template = f.read()
 except Exception:
-    logging.error("template.txt could not be read : {e}")
+    print("template.txt could not be read : {e}")
 
 
 def generate_invitations(template, attendees):
@@ -47,9 +46,9 @@ def generate_invitations(template, attendees):
                     f.write(template_to_write)
                     i += 1
             except Exception as e:
-                logging.error(f"output_{i}.txt could not be created : {e}")
+                print(f"output_{i}.txt could not be created : {e}")
     except Exception as e:
-        logging.error(e)
+        print(e)
 
 
 def is_list_of_dict(attendees):
