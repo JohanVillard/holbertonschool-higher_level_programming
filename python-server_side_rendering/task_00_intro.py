@@ -8,7 +8,9 @@ def generate_invitations(template, attendees):
     if not isinstance(template, str):
         raise TypeError(f"Template have invalid type: {type(template)}")
 
-    if not is_list_of_dict(attendees):
+    if not isinstance(attendees, list) and not all(
+        isinstance(attendee, dict) for attendee in attendees
+    ):
         raise TypeError(f"Attendees have invalid type: {type(attendees)}")
 
     if not template.strip():
@@ -19,8 +21,8 @@ def generate_invitations(template, attendees):
 
     # File incrementer
     i = 1
-    for attendee in attendees:
-        try:
+    try:
+        for attendee in attendees:
             template_to_write = template
             for key, value in attendee.items():
                 template_to_write = template_to_write.replace(
@@ -45,12 +47,5 @@ def generate_invitations(template, attendees):
 
             i += 1
 
-        except Exception as e:
-            print(f"output_{i}.txt could not be created : {e}")
-
-
-def is_list_of_dict(attendees):
-    """Check if the object is a list af dictionaries."""
-    return isinstance(attendees, list) and all(
-        isinstance(attendee, dict) for attendee in attendees
-    )
+    except Exception as e:
+        print(f"output_{i}.txt could not be created : {e}")
