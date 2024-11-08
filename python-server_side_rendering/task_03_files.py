@@ -33,7 +33,7 @@ def items():
     return render_template("items.html", items=items_list)
 
 
-@app.route("/products")
+@app.route("/products", methods=["GET"])
 def products():
     products_to_send = []
     message = None
