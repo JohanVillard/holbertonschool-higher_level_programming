@@ -24,6 +24,7 @@ def generate_invitations(template, attendees):
         for attendee in attendees:
             template_to_write = template
             for key, value in attendee.items():
+                # Ignore curly bracket
                 form_key = f"{{{key}}}"
                 template_to_write = template_to_write.replace(
                     form_key, attendee.get(key) or "N/A"
@@ -33,9 +34,10 @@ def generate_invitations(template, attendees):
                 print(f"output_{i}.txt already exists.")
                 i += 1
 
-            with open(f"output_{i}.txt", "x", encoding="utf-8") as f:
+            with open(f"output_{i}.txt", "w", encoding="utf-8") as f:
                 f.write(template_to_write)
                 print(f"output__{i}.txt created.")
+
             i += 1
 
     except Exception as e:
