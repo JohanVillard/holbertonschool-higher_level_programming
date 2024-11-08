@@ -11,8 +11,7 @@ def generate_invitations(template, attendees):
     if not is_list_of_dict(attendees):
         raise TypeError(f"Attendees have invalid type: {type(attendees)}")
 
-    # Delete the whitespaces and check if there is a string
-    if not template.strip():
+    if not template:
         raise ValueError("Template is empty, no output files generated.")
 
     if not attendees:
