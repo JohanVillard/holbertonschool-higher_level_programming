@@ -35,11 +35,11 @@ def items():
 
 @app.route("/products")
 def products():
-    source = request.args.get("source")
+    source = request.args.get("source", "")
     if source is None:
         return render_template("product_display.html", products="Bad request."), 400
 
-    product_id = request.args.get("id")
+    product_id = request.args.get("id" None)
 
     if source == "json":
         try:
