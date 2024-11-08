@@ -33,8 +33,8 @@ def items():
     return render_template("items.html", items=items_list)
 
 
-@app.route("/products", methods=["GET"])
-def products():
+@app.route("/products")
+def display_products():
     products_to_send = []
     message = None
 
