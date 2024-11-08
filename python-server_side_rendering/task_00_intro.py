@@ -38,8 +38,8 @@ def generate_invitations(template, attendees):
                 print(f"output_{i}.txt already exists.")
                 i += 1
 
-                with open(f"output_{i}.txt", "x", encoding="utf-8") as f:
-                    f.write(template_to_write)
+            with open(f"output_{i}.txt", "x", encoding="utf-8") as f:
+                f.write(template_to_write)
             i += 1
 
     except Exception as e:
