@@ -1,58 +1,59 @@
-"""This module defines a function that generates invitations."""
-
 import os
-
-with open("template.txt", "r") as f:
-    template = f.read()
 
 
 def generate_invitations(template, attendees):
-    """Generate invitation."""
-    if not isinstance(template, str):
-        raise TypeError(f"Template have invalid type: {type(template)}")
+    """Check the type of input"""
+    # ============================Conditions================================ #
 
-    if not is_list_of_dict(attendees):
-        raise TypeError(f"Attendees have invalid type: {type(attendees)}")
+    if not isinstance(template, str):
+        print("Error: The template must be a string.")
+        return
+
+    if not isinstance(attendees, list) or not all(
+        isinstance(item, dict) for item in attendees
+    ):
+        print("Error: Attendees must be a list of dictionaries.")
+        return
 
     if not template:
-        raise ValueError("Template is empty, no output files generated.")
+        print("Template is empty, no output files generated.")
+        return
 
     if not attendees:
-        raise ValueError("No data provided, no output files generated.")
+        print("No data provided, no output files generated.")
+        return
 
-    # File incrementer
-    i = 1
-    try:
-        for attendee in attendees:
-            try:
-                for key, value in attendee.items():
-                    if value is None:
-                        attendee[key] = "N/A"
+    # ====================================================================== #
 
-                template_to_write = template
-                for key, value in attendee.items():
-                    form_key = f"{{{key}}}"
-                    template_to_write = template_to_write.replace(form_key, value)
+    for index, attendee in enumerate(attendees, start=1):
+        try:
+            invitation = template
+            invitation = invitation.replace("{name}", attendee.get("name") or "N/A")
+            invitation = invitation.replace(
+                "{event_title}", attendee.get("event_title") or "N/A"
+            )
+            invitation = invitation.replace(
+                "{event_date}", attendee.get("event_date") or "N/A"
+            )
+            invitation = invitation.replace(
+                "{event_location}", attendee.get("event_location") or "N/A"
+            )
 
-                while os.path.exists(f"output_{i}.txt"):
-                    print(f"output_{i}.txt already exists.")
-                    i += 1
+            output_filename = f"output_{index}.txt"
 
-                try:
-                    with open(f"output_{i}.txt", "x", encoding="utf-8") as f:
-                        f.write(template_to_write)
-                        i += 1
-                except Exception as e:
-                    print(f"output_{i}.txt could not be created : {e}")
+            if os.path.exists(output_filename):
+                print(
+                    f"The file '{output_filename}' already exist, "
+                    "it will not be overwritten"
+                )
+                continue
 
-            except Exception as e:
-                print(f"An error occured: {e}")
-    except Exception as e:
-        print(f"An error occured: {e}")
+            with open(output_filename, "w") as file:
+                file.write(invitation)
+                print(f"Invitation successfully written to " f"'{output_filename}'.")
 
-
-def is_list_of_dict(attendees):
-    """Check if the object is a list af dictionaries."""
-    return isinstance(attendees, list) and all(
-        isinstance(attendee, dict) for attendee in attendees
-    )
+        except Exception as e:
+            print(
+                f"Error: An error occurred while generating "
+                f"'{output_filename}': {e}"
+            )
