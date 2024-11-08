@@ -11,7 +11,7 @@ def generate_invitations(template, attendees):
     if not is_list_of_dict(attendees):
         raise TypeError(f"Attendees have invalid type: {type(attendees)}")
 
-    if not template:
+    if not template.strip():
         raise ValueError("Template is empty, no output files generated.")
 
     if not attendees:
@@ -23,12 +23,18 @@ def generate_invitations(template, attendees):
         for attendee in attendees:
             template_to_write = template
             for key, value in attendee.items():
-                # Ignore curly bracket
-                form_key = f"{{{key}}}"
                 template_to_write = template_to_write.replace(
-                    form_key, attendee.get(key) or "N/A"
+                    "{name}", attendee.get("name") or "N/A"
                 )
-
+                template_to_write = template_to_write.replace(
+                    "{event_title}", attendee.get("event_title") or "N/A"
+                )
+                template_to_write = template_to_write.replace(
+                    "{event_date}", attendee.get("event_date") or "N/A"
+                )
+                template_to_write = template_to_write.replace(
+                    "{event_location}", attendee.get("event_location") or "N/A"
+                )
             while os.path.exists(f"output_{i}.txt"):
                 print(f"output_{i}.txt already exists.")
                 i += 1
