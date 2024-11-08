@@ -53,7 +53,7 @@ def products():
 
     elif source == "csv":
         try:
-            with open("products.csv", newline="") as f:
+            with open("products.csv") as f:
                 csv_reader = csv.DictReader(f)
                 raw_products = [row for row in csv_reader]
 
