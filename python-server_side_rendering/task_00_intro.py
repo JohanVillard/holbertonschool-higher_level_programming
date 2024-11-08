@@ -5,7 +5,7 @@ import os
 try:
     with open("template.txt", "r", encoding="utf-8") as f:
         template = f.read()
-except Exception:
+except Exception as e:
     print(f"template.txt could not be read : {e}")
 
 
