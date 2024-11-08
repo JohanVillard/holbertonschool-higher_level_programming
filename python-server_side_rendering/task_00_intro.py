@@ -1,7 +1,6 @@
 """This module defines a function that generates invitations."""
 
 import logging
-import os
 
 with open("template.txt", "r") as f:
     template = f.read()
@@ -33,10 +32,6 @@ def generate_invitations(template, attendees):
             for key, value in attendee.items():
                 form_key = f"{{{key}}}"
                 template_to_write = template_to_write.replace(form_key, value)
-
-            while os.path.exists(f"output_{i}.txt"):
-                print(f"output_{i}.txt already exists.")
-                i += 1
 
             with open(f"output_{i}.txt", "x", encoding="utf-8") as f:
                 f.write(template_to_write)
