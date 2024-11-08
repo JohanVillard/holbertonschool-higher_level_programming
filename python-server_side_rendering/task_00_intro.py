@@ -38,14 +38,12 @@ def generate_invitations(template, attendees):
                 print(f"output_{i}.txt already exists.")
                 i += 1
 
-            try:
                 with open(f"output_{i}.txt", "x", encoding="utf-8") as f:
                     f.write(template_to_write)
-                    i += 1
-            except Exception as e:
-                logging.error(f"output_{i}.txt could not be created : {e}")
+            i += 1
+
     except Exception as e:
-        logging.error(e)
+        logging.error(f"output_{i}.txt could not be created : {e}")
 
 
 def is_list_of_dict(attendees):
