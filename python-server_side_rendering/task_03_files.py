@@ -72,9 +72,9 @@ def products():
             product for product in products if str(product["id"]) == product_id
         ]
 
-    # Error if user specified an id which is not in database
-    if not products_to_send:
-        message = "Product not found"
+        # Error if user specified an id which is not in database
+        if not products_to_send:
+            message = "Product not found"
 
     return render_template(
         "product_display.html", products=products_to_send, message=message
