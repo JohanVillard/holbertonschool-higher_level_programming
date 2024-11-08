@@ -1,4 +1,4 @@
-{% if products.__class__.__name__ == "list" %}
+{% if products and not message %}
 
 <table>
   <thead>
@@ -23,6 +23,6 @@
 
 {% else %}
 
-<p>{{ products }}</p>
+<p>{{ message }}</p>
 
 {% endif %}

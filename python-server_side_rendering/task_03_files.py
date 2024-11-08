@@ -35,22 +35,20 @@ def items():
 
 @app.route("/products")
 def products():
+    message = ""
+    products_to_send = []
     source = request.args.get("source", "")
     if source is None:
-        return render_template("product_display.html", products="Bad request."), 400
+        message = "Bad request."
 
     product_id = request.args.get("id", None)
 
-    if source not in ["json", "csv"]:
-        return render_template("product_display.html", products="Wrong source"), 400
     if source == "json":
         try:
             with open("products.json", "r") as f:
                 products = json.load(f)
         except (FileNotFoundError, json.JSONDecodeError):
-            return render_template(
-                "product_display.html", products="Invalid json file."
-            ), 404
+            message = "Invalid json file."
 
     elif source == "csv":
         try:
@@ -64,23 +62,27 @@ def products():
                     product = {k: v.strip() for k, v in raw_product.items()}
                     products.append(product)
         except FileNotFoundError:
-            return render_template(
-                "product_display.html", products="Invalid CSV file."
-            ), 404
+            message = "Invalid CSV file."
+
+    else:
+        message = "Wrong source"
 
     if not product_id:
-        return render_template("product_display.html", products=products)
+        products_to_send = products
 
-    # Build the dict in a list by id
-    products = [product for product in products if str(product["id"]) == product_id]
+    else:
+        # Build the dict in a list by id
+        products_to_send = [
+            product for product in products if str(product["id"]) == product_id
+        ]
 
     # Error if user specified an id which is not in database
-    if not products:
-        return render_template(
-            "product_display.html", products="Product not found"
-        ), 404
+    if not products_to_send:
+        message = "Product not found"
 
-    return render_template("product_display.html", products=products)
+    return render_template(
+        "product_display.html", products=products_to_send, message=message
+    )
 
 
 if __name__ == "__main__":
