@@ -1,28 +1,41 @@
-{% if products and not message %}
+<!doctype html>
+<html lang="en">
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Category</th>
-      <th>Price</th>
-    </tr>
-  </thead>
-  <tbody>
+<head>
+  <title>Item List</title>
+</head>
 
-    {% for product in products %}
-    <tr>
-      <td>{{ product["name"] }}</td>
-      <td>{{ product["category"] }}</td>
-      <td>{{ product["price"] }}</td>
-    </tr>
-    {% endfor %}
+<body>
 
-  </tbody>
-</table>
+  {% if products and not message %}
 
-{% else %}
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
 
-<p>{{ message }}</p>
+      {% for product in products %}
+      <tr>
+        <td>{{ product["name"] }}</td>
+        <td>{{ product["category"] }}</td>
+        <td>{{ product["price"] }}</td>
+      </tr>
+      {% endfor %}
 
-{% endif %}
+    </tbody>
+  </table>
+
+  {% else %}
+
+  <p>{{ message }}</p>
+
+  {% endif %}
+
+</body>
+
+</html>
