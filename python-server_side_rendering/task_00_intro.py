@@ -28,14 +28,12 @@ def generate_invitations(template, attendees):
         # File incrementer
         i = 1
         for attendee in attendees:
-            for key, value in attendee.items():
-                if value is None:
-                    attendee[key] = "N/A"
-
             template_to_write = template
             for key, value in attendee.items():
                 form_key = f"{{{key}}}"
-                template_to_write = template_to_write.replace(form_key, value)
+                template_to_write = template_to_write.replace(
+                    form_key, attendee.get(key) or "N/A"
+                )
 
             while os.path.exists(f"output_{i}.txt"):
                 print(f"output_{i}.txt already exists.")
